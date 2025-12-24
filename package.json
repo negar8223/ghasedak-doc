@@ -9,7 +9,13 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^7.1.0",
+    "@fortawesome/free-solid-svg-icons": "^7.1.0",
+    "@fortawesome/react-fontawesome": "^3.1.1",
+    "@scalar/api-reference-react": "^0.8.15",
+    "@tanstack/react-table": "^8.21.3",
     "next": "16.1.0",
+    "openapi3-ts": "^4.5.0",
     "react": "19.2.3",
     "react-dom": "19.2.3"
   },
