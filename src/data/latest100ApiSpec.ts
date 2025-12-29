@@ -1,46 +1,46 @@
 export const latest100ApiSpec = {
-    openapi: "3.1.0",
-    info: {
-      title: "100 پیام آخر - Ghasedak SMS API",
-      version: "1.0.0",
-      description: "دریافت آخرین 100 پیام دریافتی",
-      contact: {
-        name: "پشتیبانی قاصدک",
-        email: "support@ghasedak-ict.com",
-        url: "https://ghasedak.me"
-      }
+  openapi: "3.1.0",
+  info: {
+    title: "100 پیام آخر - Ghasedak SMS API",
+    version: "1.0.0",
+    description: "دریافت آخرین 100 پیام دریافتی",
+    contact: {
+      name: "پشتیبانی قاصدک",
+      email: "support@ghasedak-ict.com",
+      url: "https://ghasedak.me",
     },
-    servers: [
-      {
-        url: "https://gateway.ghasedak.me/rest/api/v1",
-        description: "سرور اصلی قاصدک"
-      }
-    ],
-    paths: {
-      "/WebService/GetReceivedSmses": {
-        get: {
-          summary: "100 پیام آخر",
-          description: `دریافت لیست آخرین 100 پیام دریافتی.
+  },
+  servers: [
+    {
+      url: "https://gateway.ghasedak.me/rest/api/v1",
+      description: "سرور اصلی قاصدک",
+    },
+  ],
+  paths: {
+    "/WebService/GetReceivedSmses": {
+      get: {
+        summary: "100 پیام آخر",
+        description: `دریافت لیست آخرین 100 پیام دریافتی.
   
   این متد آخرین پیام‌های دریافتی خط شما را برمی‌گرداند.
   می‌توانید پیام‌های خوانده شده یا خوانده نشده را فیلتر کنید.`,
-  
-          security: [
-            {
-              ApiKey: []
-            }
-          ],
-          "x-code-samples": [
-            {
-              lang: "curl",
-              label: "cURL",
-              source: `curl -X GET "https://gateway.ghasedak.me/rest/api/v1/WebService/GetReceivedSmses?lineNumber=21*******&isRead=false" \\
-    -H "ApiKey: your-api-key-here"`
-            },
-            {
-              lang: "php",
-              label: "PHP",
-              source: `<?php
+
+        security: [
+          {
+            ApiKey: [],
+          },
+        ],
+        "x-code-samples": [
+          {
+            lang: "curl",
+            label: "cURL",
+            source: `curl -X GET "https://gateway.ghasedak.me/rest/api/v1/WebService/GetReceivedSmses?lineNumber=21*******&isRead=false" \\
+    -H "ApiKey: your-api-key-here"`,
+          },
+          {
+            lang: "php",
+            label: "PHP",
+            source: `<?php
   $lineNumber = "21*******";
   $isRead = false; // false برای پیام‌های خوانده نشده
   $apiKey = "your-api-key-here";
@@ -71,12 +71,12 @@ export const latest100ApiSpec = {
           }
       }
   }
-  ?>`
-            },
-            {
-              lang: "javascript",
-              label: "Node.js",
-              source: `const axios = require('axios');
+  ?>`,
+          },
+          {
+            lang: "javascript",
+            label: "Node.js",
+            source: `const axios = require('axios');
   
   const getReceivedMessages = async (lineNumber, isRead = false) => {
     try {
@@ -107,12 +107,12 @@ export const latest100ApiSpec = {
   };
   
   // استفاده
-  getReceivedMessages('21*******', false);`
-            },
-            {
-              lang: "python",
-              label: "Python",
-              source: `import requests
+  getReceivedMessages('21*******', false);`,
+          },
+          {
+            lang: "python",
+            label: "Python",
+            source: `import requests
   
   def get_received_messages(line_number, is_read=False):
       """
@@ -146,12 +146,12 @@ export const latest100ApiSpec = {
           return None
   
   # استفاده
-  get_received_messages('21*******', False)`
-            },
-            {
-              lang: "csharp",
-              label: "C#",
-              source: `using System;
+  get_received_messages('21*******', False)`,
+          },
+          {
+            lang: "csharp",
+            label: "C#",
+            source: `using System;
   using System.Net.Http;
   using System.Threading.Tasks;
   using System.Text.Json;
@@ -198,12 +198,12 @@ export const latest100ApiSpec = {
       {
           await GetReceivedMessages("21*******", false);
       }
-  }`
-            },
-            {
-              lang: "java",
-              label: "Java",
-              source: `import okhttp3.*;
+  }`,
+          },
+          {
+            lang: "java",
+            label: "Java",
+            source: `import okhttp3.*;
   import org.json.JSONObject;
   import org.json.JSONArray;
   import java.io.IOException;
@@ -249,12 +249,12 @@ export const latest100ApiSpec = {
               }
           }
       }
-  }`
-            },
-            {
-              lang: "go",
-              label: "Go",
-              source: `package main
+  }`,
+          },
+          {
+            lang: "go",
+            label: "Go",
+            source: `package main
   
   import (
       "encoding/json"
@@ -330,207 +330,208 @@ export const latest100ApiSpec = {
       if err := getReceivedMessages("21*******", false); err != nil {
           fmt.Printf("خطا: %v\\n", err)
       }
-  }`
-            }
-          ],
-          parameters: [
-            {
-              name: "ApiKey",
-              in: "header",
-              required: true,
-              description: "کلید احراز هویت لازم برای دسترسی به فهرست پیام‌های دریافتی.",
-              schema: {
-                type: "string"
-              }
+  }`,
+          },
+        ],
+        parameters: [
+          {
+            name: "ApiKey",
+            in: "header",
+            required: true,
+            description:
+              "کلید احراز هویت لازم برای دسترسی به فهرست پیام‌های دریافتی.",
+            schema: {
+              type: "string",
             },
-            {
-              name: "lineNumber",
-              in: "query",
-              required: true,
-              description: "شماره خط",
-              schema: {
-                type: "string",
-                example: "21*******"
-              }
+          },
+          {
+            name: "lineNumber",
+            in: "query",
+            required: true,
+            description: "شماره خط",
+            schema: {
+              type: "string",
+              example: "21*******",
             },
-            {
-              name: "isRead",
-              in: "query",
-              required: false,
-              description:
-                "اگر (0) وارد شود پیام های خوانده نشده و اگر (1) وارد شود پیام های خوانده شده بر می گردد. در صورت وارد نکردن به صورت پیش فرض (0) می باشد.",
-              schema: {
-                type: "boolean",
-                example: false
-              }
-            }
-          ],
-          responses: {
-            "200": {
-              content: {
-                "application/json": {
-                  schema: {
-                    type: "object",
-                    properties: {
-                      isSuccess: {
-                        type: "boolean",
-                        description: "وضعیت پاسخ وب سرویس"
-                      },
-                      statusCode: {
-                        type: "integer",
-                        description: "کد وضعیت"
-                      },
-                      message: {
-                        type: "string",
-                        description: "پیام وضعیت وب سرویس"
-                      },
-                      data: {
-                        type: "object",
-                        properties: {
+          },
+          {
+            name: "isRead",
+            in: "query",
+            required: false,
+            description:
+              "اگر (0) وارد شود پیام های خوانده نشده و اگر (1) وارد شود پیام های خوانده شده بر می گردد. در صورت وارد نکردن به صورت پیش فرض (0) می باشد.",
+            schema: {
+              type: "boolean",
+              example: false,
+            },
+          },
+        ],
+        responses: {
+          "200": {
+            content: {
+              "application/json": {
+                schema: {
+                  type: "object",
+                  properties: {
+                    isSuccess: {
+                      type: "boolean",
+                      description: "وضعیت پاسخ وب سرویس",
+                    },
+                    statusCode: {
+                      type: "integer",
+                      description: "کد وضعیت",
+                    },
+                    message: {
+                      type: "string",
+                      description: "پیام وضعیت وب سرویس",
+                    },
+                    data: {
+                      type: "object",
+                      properties: {
+                        items: {
+                          type: "array",
                           items: {
-                            type: "array",
-                            items: {
-                              type: "object",
-                              properties: {
-                                id: {
-                                  type: "integer",
-                                  description: "شناسه پیام"
-                                },
-                                message: {
-                                  type: "string",
-                                  description: "متن پیام"
-                                },
-                                sender: {
-                                  type: "string",
-                                  description: "فرستنده"
-                                },
-                                lineNumber: {
-                                  type: "string",
-                                  description: "شماره خط ارسال پیام"
-                                },
-                                receiveDate: {
-                                  type: "string",
-                                  format: "date-time",
-                                  description: "زمان و تاریخ دریافت پیام"
-                                }
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                  },
-                  examples: {
-                    example1: {
-                      summary: "نمونه پاسخ",
-                      value: {
-                        isSuccess: true,
-                        statusCode: 200,
-                        message: "با موفقیت انجام شد",
-                        data: {
-                          items: [
-                            {
-                              id: 12345,
-                              message: "سلام، این یک پیام تست است",
-                              sender: "0919*******",
-                              lineNumber: "21*******",
-                              receiveDate: "2024-07-02T14:00:34.975Z"
+                            type: "object",
+                            properties: {
+                              id: {
+                                type: "integer",
+                                description: "شناسه پیام",
+                              },
+                              message: {
+                                type: "string",
+                                description: "متن پیام",
+                              },
+                              sender: {
+                                type: "string",
+                                description: "فرستنده",
+                              },
+                              lineNumber: {
+                                type: "string",
+                                description: "شماره خط ارسال پیام",
+                              },
+                              receiveDate: {
+                                type: "string",
+                                format: "date-time",
+                                description: "زمان و تاریخ دریافت پیام",
+                              },
                             },
-                            {
-                              id: 12346,
-                              message: "پیام دوم",
-                              sender: "0937*******",
-                              lineNumber: "21*******",
-                              receiveDate: "2024-07-02T14:05:12.123Z"
-                            }
-                          ]
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            },
-            "400": {
-              description: "درخواست نامعتبر",
-              content: {
-                "application/json": {
-                  schema: {
-                    type: "object",
-                    properties: {
-                      isSuccess: {
-                        type: "boolean",
-                        description: "وضعیت پاسخ وب سرویس"
+                          },
+                        },
                       },
-                      statusCode: {
-                        type: "integer",
-                        description: "کد وضعیت"
-                      },
-                      message: {
-                        type: "string",
-                        description: "پیام خطا"
-                      }
-                    }
+                    },
                   },
-                  examples: {
-                    example1: {
-                      summary: "نمونه خطای 400",
-                      value: {
-                        isSuccess: false,
-                        statusCode: 400,
-                        message: "پارامترهای ورودی نامعتبر است"
-                      }
-                    }
-                  }
-                }
-              }
-            },
-            "500": {
-              description: "خطای سرور",
-              content: {
-                "application/json": {
-                  schema: {
-                    type: "object",
-                    properties: {
-                      isSuccess: {
-                        type: "boolean",
-                        description: "وضعیت پاسخ وب سرویس"
+                },
+                examples: {
+                  example1: {
+                    summary: "نمونه پاسخ",
+                    value: {
+                      isSuccess: true,
+                      statusCode: 200,
+                      message: "با موفقیت انجام شد",
+                      data: {
+                        items: [
+                          {
+                            id: 12345,
+                            message: "سلام، این یک پیام تست است",
+                            sender: "0919*******",
+                            lineNumber: "21*******",
+                            receiveDate: "2024-07-02T14:00:34.975Z",
+                          },
+                          {
+                            id: 12346,
+                            message: "پیام دوم",
+                            sender: "0937*******",
+                            lineNumber: "21*******",
+                            receiveDate: "2024-07-02T14:05:12.123Z",
+                          },
+                        ],
                       },
-                      statusCode: {
-                        type: "integer",
-                        description: "کد وضعیت"
-                      },
-                      message: {
-                        type: "string",
-                        description: "پیام خطا"
-                      }
-                    }
+                    },
                   },
-                  examples: {
-                    example1: {
-                      summary: "نمونه خطای 500",
-                      value: {
-                        isSuccess: false,
-                        statusCode: 500,
-                        message: "خطای داخلی سرور"
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
+                },
+              },
+            },
+          },
+          "400": {
+            description: "درخواست نامعتبر",
+            content: {
+              "application/json": {
+                schema: {
+                  type: "object",
+                  properties: {
+                    isSuccess: {
+                      type: "boolean",
+                      description: "وضعیت پاسخ وب سرویس",
+                    },
+                    statusCode: {
+                      type: "integer",
+                      description: "کد وضعیت",
+                    },
+                    message: {
+                      type: "string",
+                      description: "پیام خطا",
+                    },
+                  },
+                },
+                examples: {
+                  example1: {
+                    summary: "نمونه خطای 400",
+                    value: {
+                      isSuccess: false,
+                      statusCode: 400,
+                      message: "پارامترهای ورودی نامعتبر است",
+                    },
+                  },
+                },
+              },
+            },
+          },
+          "500": {
+            description: "خطای سرور",
+            content: {
+              "application/json": {
+                schema: {
+                  type: "object",
+                  properties: {
+                    isSuccess: {
+                      type: "boolean",
+                      description: "وضعیت پاسخ وب سرویس",
+                    },
+                    statusCode: {
+                      type: "integer",
+                      description: "کد وضعیت",
+                    },
+                    message: {
+                      type: "string",
+                      description: "پیام خطا",
+                    },
+                  },
+                },
+                examples: {
+                  example1: {
+                    summary: "نمونه خطای 500",
+                    value: {
+                      isSuccess: false,
+                      statusCode: 500,
+                      message: "خطای داخلی سرور",
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
     },
-    components: {
-      securitySchemes: {
-        ApiKey: {
-          type: "apiKey",
-          in: "header",
-          name: "ApiKey",
-          description: "کلید شناسه API"
-        }
-      }
-    }
-  };
+  },
+  components: {
+    securitySchemes: {
+      ApiKey: {
+        type: "apiKey",
+        in: "header",
+        name: "ApiKey",
+        description: "کلید شناسه API",
+      },
+    },
+  },
+};

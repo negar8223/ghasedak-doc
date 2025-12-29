@@ -930,7 +930,8 @@ a {
 
 .sidebar__group-title {
   color: var(--text);
-  font-weight: 600;
+  /* font-size: 13px; */
+  font-weight: 500;
 }
 
 .sidebar__group-title--collapsible {
@@ -969,10 +970,60 @@ a {
   font-size: 13px;
   padding: 6px 0;
 }
+.sidebar__group-subtitle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 2px 1px;
+  font-size: 13px;
+  margin-right: -12px;
+  color: var(--muted);
+}
+/* ===== Vertical timeline menu ===== */
+
+.sidebar__links {
+  position: relative;
+  padding-right: 18px; /* جا برای خط و نقطه */
+}
+
+.sidebar__links::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 6px;
+  width: 2px;
+  background: var(--border);
+}
+
+.sidebar__link {
+  position: relative;
+}
+
+.sidebar__link::before {
+  content: "";
+  position: absolute;
+  right: -16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #d1d5db;
+  z-index: 1;
+}
+
+.sidebar__link--active::before {
+  background: #0d9488;
+}
+
+.sidebar__link:hover::before {
+  background: var(--text);
+}
 
 .content {
   padding: 32px 48px;
-  max-width: 1280px;
+  max-width: 1590px;
   width: 100%;
   margin: 0 auto 64px;
 }

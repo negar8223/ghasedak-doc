@@ -32,12 +32,12 @@ function App() {
   const navGroups: NavGroup[] = [
     {
       title: "نمای کلی مستندات",
-      subtitle: "نمای کلی مستندات API",
+      // subtitle: "نمای کلی مستندات API",
       links: [{ href: "#docs-overview", label: "نمای کلی مستندات" }],
     },
     {
       title: "ارسال",
-      subtitle: "سرویس ارسال پیامک",
+      // subtitle: "سرویس ارسال پیامک",
       links: [
         { href: "#send-single", label: "ارسال تکی", method: "POST" },
         { href: "#send-bulk", label: "ارسال گروهی", method: "POST" },
@@ -46,7 +46,7 @@ function App() {
     },
     {
       title: "سرویس اعتبار سنجی",
-      subtitle: "متد اعتبارسنجی",
+      // subtitle: "متد اعتبارسنجی",
       links: [
         {
           href: "#otp-send",
@@ -63,7 +63,7 @@ function App() {
     },
     {
       title: "گزارش وضعیت",
-      subtitle: "وضعیت",
+      // subtitle: "وضعیت",
       links: [
         {
           href: "#status-report",
@@ -74,7 +74,7 @@ function App() {
     },
     {
       title: "پیام های دریافتی",
-      subtitle: "پیام های دریافتی",
+      // subtitle: "پیام های دریافتی",
       links: [
         { href: "#inbox-latest", label: "100 پیام آخر", method: "GET" },
         { href: "#inbox-paged", label: "صفحه بندی", method: "GET" },
@@ -227,12 +227,12 @@ function App() {
                   {group.subtitle && (
                     <div
                       className="sidebar__group-subtitle"
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        color: "gray",
-                        fontSize: "14px",
-                      }}
+                      // style={{
+                      //   display: "flex",
+                      //   alignItems: "center",
+                      //   color: "gray",
+                      //   fontSize: "14px",
+                      // }}
                     >
                       <span style={{ marginRight: "10px" }}>
                         {group.subtitle}
@@ -307,7 +307,7 @@ function App() {
           <section id="docs-overview" className="content-section">
             <div className="home-page">
               <section className="home-hero">
-                <h1>نمای کلی مستندات</h1>
+                <h2>نمای کلی مستندات</h2>
                 <p>
                   به مستندات وب‌سرویس پیام کوتاه قاصدک خوش آمدید. این مستندات
                   شامل راهنمای کامل استفاده از API های مختلف برای ارسال پیامک،
@@ -330,7 +330,7 @@ function App() {
                     </div>
                   </div>
                   <div className="home-base-url-card">
-                    <BaseUrlCard url="https://gateway.ghasedak.me/rest/api/v1/" />
+                    <BaseUrlCard url="https://gateway.ghasedak.me/" />
                   </div>
                 </div>
 

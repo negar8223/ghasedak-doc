@@ -13,6 +13,7 @@ type Props = {
 
 const ScalarApiReference = ({ spec, instanceKey, theme }: Props) => {
   const configuration = {
+    _integration: "fastify",
     spec: { content: spec },
     showSidebar: false,
     layout: "modern", // literal type درست
@@ -41,11 +42,54 @@ const ScalarApiReference = ({ spec, instanceKey, theme }: Props) => {
       .scalar-api-reference .scalar-address-bar input {
         box-shadow: none !important;
       }
-      // .section-columns {
-      //   direction:rtl
-      // }
+      .section-columns {
+        direction:rtl
+      }
+      .section-header-wrapper {
+        direction:rtl
+      }
+      .property-heading {
+        display: flex;
+        justify-content: flex-start;
+        direction: ltr;
+      }
+      .section-container{
+        background-color:#0f172a;
+      }
+      
+      
+      .markdown{
+        display:block;
+        text-align:right;
+      }
+      .markdown ul {
+        margin-right: 20px; 
+      }
+      .section-header{
+        display:flex
+      }
+      .scalar-app .markdown p {
+        text-align: right;
+        direction: rtl;
+        align-self: flex-start;
+      }
+      .code-snippet {
+        text-align: left;
+        direction: ltr;
+      }
+      .scalar-card-content {
+        text-align: left;
+        direction: ltr;
+      }
+      .operation-box__endpoint{
+        text-align: left;
+        direction: ltr;
+      }
+      
+      
       
     `,
+    allowedLanguages: ["Node.js", "Python"],
   } as AnyApiReferenceConfiguration; // ← cast امن به type رسمی پکیج
 
   return (
