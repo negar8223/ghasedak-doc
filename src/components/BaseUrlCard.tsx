@@ -1,4 +1,6 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
+import { faCheck, faCopy } from "@fortawesome/free-solid-svg-icons";
 
 const CopyIcon = () => (
   <svg
@@ -50,15 +52,23 @@ export const BaseUrlCard = ({ url }: BaseUrlCardProps) => {
       <div className="base-url-card__top">
         <button
           type="button"
-          className="base-url-card__copy"
+          className={`ghost-btn ${copied ? "ghost-btn--active" : ""}`}
           onClick={handleCopy}
           aria-label={copied ? "کپی شد" : "کپی"}
         >
-          {copied ? <CheckIcon /> : <CopyIcon />}
-          <span className="base-url-card__sr-only">
+          {/* {copied ? <CheckIcon /> : <CopyIcon />} */}
+          <FontAwesomeIcon icon={copied ? faCheck : faCopy} />
+          {/* <span className="base-url-card__sr-only">
             {copied ? "کپی شد" : "کپی"}
-          </span>
+          </span> */}
         </button>
+        {/* <button
+        className={`ghost-btn ${copied ? "ghost-btn--active" : ""}`}
+        onClick={handleCopy}
+        aria-label={copied ? "کپی شد" : "کپی"}
+      >
+        <FontAwesomeIcon icon={copied ? faCheck : faCopy} />
+      </button> */}
         <div className="base-url-card__label">
           <span>BASE URL</span>
         </div>

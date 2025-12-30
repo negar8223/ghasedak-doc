@@ -1,131 +1,132 @@
 export const sendP2pSmsApiSpec = {
-    openapi: "3.1.0",
-    info: {
-      title: "Send Group SMS Peer to Peer API",
-      version: "1.0.0",
-      description:
-        "از این متد برای ارسال پیامک به صورت گروهی با متون مختلف و شماره فرستندگان و گیرندگان مختلف استفاده می‌شود."
+  openapi: "3.1.0",
+  info: {
+    title: "Send Group SMS Peer to Peer API",
+    version: "1.0.0",
+    description:
+      "از این متد برای ارسال پیامک به صورت گروهی با متون مختلف و شماره فرستندگان و گیرندگان مختلف استفاده می‌شود.",
+  },
+  servers: [
+    {
+      url: "https://gateway.ghasedak.me/rest/api/v1",
+      description: "Production server",
     },
-    servers: [
-      {
-        url: "https://gateway.ghasedak.me/rest/api/v1",
-        description: "Production server"
-      }
-    ],
-    paths: {
-      "/WebService/SendPairToPairSMS": {
-        post: {
-          summary: "",
-          description: "",
-          security: [
-            {
-              ApiKeyAuth: []
-            }
-          ],
-          parameters: [
-            {
-              name: "ApiKey",
-              in: "header",
-              required: true,
-              description: "کلید احراز هویت دریافت‌شده از داشبورد قاصدک.",
-              schema: {
-                type: "string"
-              }
-            },
-            {
-              name: "Content-Type",
-              in: "header",
-              required: true,
-              description: "برای ارسال بدنه‌ی JSON مقدار باید application/json باشد.",
-              schema: {
-                type: "string",
-                example: "application/json"
-              }
-            }
-          ],
-          requestBody: {
-            required: true,
-            in: "body",
-            content: {
-              "application/json": {
-                schema: {
-                  title: "Body",
-                  type: "object",
-                  required: ["items"],
-                  properties: {
-                    items: {
-                      type: "array",
-                      description: "لیست پیامک‌های نظیر به نظیر",
-                      items: {
-                        type: "object",
-                        required: ["lineNumber", "receptor", "message"],
-                        properties: {
-                          lineNumber: {
-                            type: "string",
-                            description: "شماره فرستنده پیام",
-                            example: "21*******"
-                          },
-                          receptor: {
-                            type: "string",
-                            description: "شماره گیرنده پیام",
-                            example: "0937*******"
-                          },
-                          message: {
-                            type: "string",
-                            description: "متنی که باید ارسال شود",
-                            example: "ارسال پیام نظیر به نظیر از وب سرویس قاصدک"
-                          },
-                          clientReferenceId: {
-                            type: "string",
-                            description:
-                              "برای تعیین شماره‌ای یکتا از طرف کاربر برای هر پیامک به کار می‌رود و پس از ارسال پیامک می‌توان با متد status کلیه اطلاعات پیام ارسال شده را دریافت کرد.",
-                            example: "1"
-                          },
-                          sendDate: {
-                            type: "string",
-                            format: "date-time",
-                            description:
-                              "تاریخ و زمان دقیق ارسال پیام که اگر قید نشود در همان لحظه پیام ارسال می‌شود.",
-                            example: "2024-07-20T07:18:57.128Z"
-                          }
-                        }
-                      }
-                    },
-                    udh: {
-                      type: "boolean",
-                      description:
-                        "برای تعیین نوع ارسال پیام‌ها که می‌تواند 16 یا 8 بیتی باشد و اگر مقدار true پاس داده شود پیام 16 بیتی و اگر مقدار false داده شود پیام 8 بیتی ارسال خواهد شد همچنین این پارامتر فقط برای پیش شماره 9000 کاربرد دارد.",
-                      example: false
-                    }
-                  },
-                  example: {
-                    items: [
-                      {
-                        lineNumber: "21*******",
-                        receptor: "0937*******",
-                        message: "ارسال پیام نظیر به نظیر از وب سرویس قاصدک",
-                        clientReferenceId: "1",
-                        sendDate: "2024-07-20T07:18:57.128Z"
-                      },
-                      {
-                        lineNumber: "21*******",
-                        receptor: "0912*******",
-                        message: "ارسال پیام دوم نظیر به نظیر از وب سرویس قاصدک",
-                        clientReferenceId: "2",
-                        sendDate: "2024-07-20T07:18:57.128Z"
-                      }
-                    ],
-                    udh: false
-                  }
-                }
-              }
-            }
+  ],
+  paths: {
+    "/WebService/SendPairToPairSMS": {
+      post: {
+        summary: "",
+        description: "",
+        security: [
+          {
+            ApiKeyAuth: [],
           },
-          "x-codeSamples": [
-            {
-              lang: "curl",
-              label: "curl",
-              source: `curl -X 'POST' \
+        ],
+        parameters: [
+          {
+            name: "ApiKey",
+            in: "header",
+            required: true,
+            description: "کلید احراز هویت دریافت‌شده از داشبورد قاصدک.",
+            schema: {
+              type: "string",
+            },
+          },
+          {
+            name: "Content-Type",
+            in: "header",
+            required: true,
+            description:
+              "برای ارسال بدنه‌ی JSON مقدار باید application/json باشد.",
+            schema: {
+              type: "string",
+              example: "application/json",
+            },
+          },
+        ],
+        requestBody: {
+          required: true,
+          in: "body",
+          content: {
+            "application/json": {
+              schema: {
+                title: "Body",
+                type: "object",
+                required: ["items"],
+                properties: {
+                  items: {
+                    type: "array",
+                    description: "لیست پیامک‌های نظیر به نظیر",
+                    items: {
+                      type: "object",
+                      required: ["lineNumber", "receptor", "message"],
+                      properties: {
+                        lineNumber: {
+                          type: "string",
+                          description: "شماره فرستنده پیام",
+                          example: "21*******",
+                        },
+                        receptor: {
+                          type: "string",
+                          description: "شماره گیرنده پیام",
+                          example: "0937*******",
+                        },
+                        message: {
+                          type: "string",
+                          description: "متنی که باید ارسال شود",
+                          example: "ارسال پیام نظیر به نظیر از وب سرویس قاصدک",
+                        },
+                        clientReferenceId: {
+                          type: "string",
+                          description:
+                            "برای تعیین شماره‌ای یکتا از طرف کاربر برای هر پیامک به کار می‌رود و پس از ارسال پیامک می‌توان با متد status کلیه اطلاعات پیام ارسال شده را دریافت کرد.",
+                          example: "1",
+                        },
+                        sendDate: {
+                          type: "string",
+                          format: "date-time",
+                          description:
+                            "تاریخ و زمان دقیق ارسال پیام که اگر قید نشود در همان لحظه پیام ارسال می‌شود.",
+                          example: "2024-07-20T07:18:57.128Z",
+                        },
+                      },
+                    },
+                  },
+                  udh: {
+                    type: "boolean",
+                    description:
+                      "برای تعیین نوع ارسال پیام‌ها که می‌تواند 16 یا 8 بیتی باشد و اگر مقدار true پاس داده شود پیام 16 بیتی و اگر مقدار false داده شود پیام 8 بیتی ارسال خواهد شد همچنین این پارامتر فقط برای پیش شماره 9000 کاربرد دارد.",
+                    example: false,
+                  },
+                },
+                example: {
+                  items: [
+                    {
+                      lineNumber: "21*******",
+                      receptor: "0937*******",
+                      message: "ارسال پیام نظیر به نظیر از وب سرویس قاصدک",
+                      clientReferenceId: "1",
+                      sendDate: "2024-07-20T07:18:57.128Z",
+                    },
+                    {
+                      lineNumber: "21*******",
+                      receptor: "0912*******",
+                      message: "ارسال پیام دوم نظیر به نظیر از وب سرویس قاصدک",
+                      clientReferenceId: "2",
+                      sendDate: "2024-07-20T07:18:57.128Z",
+                    },
+                  ],
+                  udh: false,
+                },
+              },
+            },
+          },
+        },
+        "x-codeSamples": [
+          {
+            lang: "curl",
+            label: "curl",
+            source: `curl -X 'POST' \
     'https://gateway.ghasedak.me/rest/api/v1/WebService/SendPairToPairSMS' \
     -H 'accept: text/plain' \
     -H 'ApiKey: "your-apiKey' \
@@ -148,12 +149,12 @@ export const sendP2pSmsApiSpec = {
         }
       ],
       "udh": false
-    }'`
-            },
-            {
-              lang: "csharp",
-              label: "C#",
-              source: `using System;
+    }'`,
+          },
+          {
+            lang: "csharp",
+            label: "C#",
+            source: `using System;
   using System.Net.Http;
   using System.Text;
   using System.Threading.Tasks;
@@ -206,12 +207,12 @@ export const sendP2pSmsApiSpec = {
           response.EnsureSuccessStatusCode();
           Console.WriteLine(await response.Content.ReadAsStringAsync());
       }
-  }`
-            },
-            {
-              lang: "php",
-              label: "PHP",
-              source: `<?php
+  }`,
+          },
+          {
+            lang: "php",
+            label: "PHP",
+            source: `<?php
   
   $curl = curl_init();
   
@@ -252,12 +253,12 @@ export const sendP2pSmsApiSpec = {
   $response = curl_exec($curl);
   
   curl_close($curl);
-  echo $response;`
-            },
-            {
-              lang: "java",
-              label: "Java",
-              source: `import com.google.gson.Gson;
+  echo $response;`,
+          },
+          {
+            lang: "java",
+            label: "Java",
+            source: `import com.google.gson.Gson;
   import okhttp3.*;
   
   import java.io.IOException;
@@ -324,12 +325,12 @@ export const sendP2pSmsApiSpec = {
               System.out.println(response.body().string());
           }
       }
-  }`
-            },
-            {
-              lang: "javascript",
-              label: "Node.js",
-              source: `var request = require('request');
+  }`,
+          },
+          {
+            lang: "javascript",
+            label: "Node.js",
+            source: `var request = require('request');
   var options = {
     method: 'POST',
     url: 'https://gateway.ghasedak.me/rest/api/v1/WebService/SendPairToPairSMS',
@@ -362,12 +363,12 @@ export const sendP2pSmsApiSpec = {
   request(options, function (error, response) {
     if (error) throw new Error(error);
     console.log(response.body);
-  });`
-            },
-            {
-              lang: "python",
-              label: "Python",
-              source: `import requests
+  });`,
+          },
+          {
+            lang: "python",
+            label: "Python",
+            source: `import requests
   import json
   
   url = "https://gateway.ghasedak.me/rest/api/v1/WebService/SendPairToPairSMS"
@@ -399,12 +400,12 @@ export const sendP2pSmsApiSpec = {
   
   response = requests.request("POST", url, headers=headers, data=payload)
   
-  print(response.text)`
-            },
-            {
-              lang: "go",
-              label: "Go",
-              source: `package main
+  print(response.text)`,
+          },
+          {
+            lang: "go",
+            label: "Go",
+            source: `package main
   
   import (
       "bytes"
@@ -478,118 +479,123 @@ export const sendP2pSmsApiSpec = {
           return
       }
       fmt.Println(string(body))
-  }`
-            }
-          ],
-          responses: {
-            "200": {
-              description: "",
-              content: {
-                "application/json": {
-                  schema: {
-                    type: "object",
-                    properties: {
-                      isSuccess: {
-                        type: "boolean",
-                        description: "وضعیت پاسخ وب سرویس",
-                        example: true
-                      },
-                      statusCode: {
-                        type: "integer",
-                        description: "کد وضعیت",
-                        example: 200
-                      },
-                      message: {
-                        type: "string",
-                        description: "پیام وضعیت وب سرویس",
-                        example: ""
-                      },
-                      data: {
-                        type: "object",
-                        properties: {
-                          items: {
-                            type: "array",
-                            items: {
-                              type: "object",
-                              properties: {
-                                lineNumber: {
-                                  type: "string",
-                                  description: "شماره خطی که پیام را ارسال می‌کند",
-                                  example: "21*******"
-                                },
-                                receptor: {
-                                  type: "string",
-                                  description: "شماره گیرنده",
-                                  example: "091********"
-                                },
-                                messageId: {
-                                  type: "string",
-                                  description: "شناسه پیام",
-                                  example: "4249"
-                                },
-                                cost: {
-                                  type: "integer",
-                                  description: "هزینه ارسال پیام",
-                                  example: 1732
-                                },
-                                sendDate: {
-                                  type: "string",
-                                  format: "date-time",
-                                  description: "زمان و تاریخ ارسال پیام",
-                                  example: "2024-07-03T13:09:03.465Z"
-                                },
-                                message: {
-                                  type: "string",
-                                  description: "متن پیام",
-                                  example: "test ghasedak"
-                                }
-                              }
-                            }
-                          }
-                        }
-                      }
+  }`,
+          },
+        ],
+        responses: {
+          "200": {
+            description: "",
+            content: {
+              "application/json": {
+                schema: {
+                  type: "object",
+                  properties: {
+                    isSuccess: {
+                      type: "boolean",
+                      description: "وضعیت پاسخ وب سرویس",
+                      example: true,
                     },
-                    example: {
-                      isSuccess: true,
-                      statusCode: 200,
-                      message: "",
-                      data: {
-                        items: [
-                          {
-                            lineNumber: "21*******",
-                            receptor: "091********",
-                            messageId: "4249",
-                            cost: 1732,
-                            sendDate: "2024-07-03T13:09:03.465Z",
-                            message: "test ghasedak"
+                    statusCode: {
+                      type: "integer",
+                      description: "کد وضعیت",
+                      example: 200,
+                    },
+                    message: {
+                      type: "string",
+                      description: "پیام وضعیت وب سرویس",
+                      example: "",
+                    },
+                    data: {
+                      type: "object",
+                      properties: {
+                        items: {
+                          type: "array",
+                          items: {
+                            type: "object",
+                            properties: {
+                              lineNumber: {
+                                type: "string",
+                                description:
+                                  "شماره خطی که پیام را ارسال می‌کند",
+                                example: "21*******",
+                              },
+                              receptor: {
+                                type: "string",
+                                description: "شماره گیرنده",
+                                example: "091********",
+                              },
+                              messageId: {
+                                type: "string",
+                                description: "شناسه پیام",
+                                example: "4249",
+                              },
+                              cost: {
+                                type: "integer",
+                                description: "هزینه ارسال پیام",
+                                example: 1732,
+                              },
+                              sendDate: {
+                                type: "string",
+                                format: "date-time",
+                                description: "زمان و تاریخ ارسال پیام",
+                                example: "2024-07-03T13:09:03.465Z",
+                              },
+                              message: {
+                                type: "string",
+                                description: "متن پیام",
+                                example: "test ghasedak",
+                              },
+                            },
                           },
-                          {
-                            lineNumber: "21*******",
-                            receptor: "093********",
-                            messageId: "4250",
-                            cost: 1732,
-                            sendDate: "2024-07-03T13:09:03.465Z",
-                            message: "test ghasedak"
-                          }
-                        ]
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
+                        },
+                      },
+                    },
+                  },
+                  example: {
+                    isSuccess: true,
+                    statusCode: 200,
+                    message: "",
+                    data: {
+                      items: [
+                        {
+                          lineNumber: "21*******",
+                          receptor: "091********",
+                          messageId: "4249",
+                          cost: 1732,
+                          clientReferenceId: "",
+                          sendDate: "2024-07-03T13:09:03.465Z",
+                          message: "test ghasedak",
+                          statusDescription: "",
+                        },
+                        {
+                          lineNumber: "21*******",
+                          receptor: "093********",
+                          messageId: "4250",
+                          cost: 1732,
+                          clientReferenceId: "",
+                          sendDate: "2024-07-03T13:09:03.465Z",
+                          message: "test ghasedak",
+                          statusDescription: "",
+                        },
+                      ],
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
     },
-    components: {
-      securitySchemes: {
-        ApiKeyAuth: {
-          type: "apiKey",
-          in: "header",
-          name: "ApiKey",
-          description: "کلید شناسه (اجباری)"
-        }
-      }
-    }
-  };
+  },
+  components: {
+    securitySchemes: {
+      ApiKeyAuth: {
+        type: "apiKey",
+        in: "header",
+        name: "ApiKey",
+        description: "کلید شناسه (اجباری)",
+      },
+    },
+  },
+};

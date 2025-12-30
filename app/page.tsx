@@ -24,6 +24,7 @@ import { paginatedApiSpec } from "@/src/data/paginatedApiSpec";
 import ErrorTable from "@/src/components/ErrorTable";
 import { BaseUrlCard } from "@/src/components/BaseUrlCard";
 import { SdkLanguages } from "@/src/components/SdkLanguages";
+import PhpDescription from "@/src/components/PhpDescription";
 
 type NavLink = { href: string; label: string; method?: string };
 type NavGroup = { title: string; subtitle?: string; links: NavLink[] };
@@ -33,56 +34,57 @@ function App() {
     {
       title: "نمای کلی مستندات",
       // subtitle: "نمای کلی مستندات API",
-      links: [{ href: "#docs-overview", label: "نمای کلی مستندات" }],
+      links: [
+        { href: "#docs-overview", label: "نمای کلی مستندات" },
+        { href: "#docs-authorization", label: "احراز هویت" },
+        { href: "#errors", label: "جدول خطاها" },
+      ],
     },
     {
-      title: "ارسال",
+      title: "کتابخانه ها و sdkها",
+      // subtitle: "سرویس ارسال پیامک",
+      links: [
+        { href: "#php", label: "php", method: "POST" },
+        { href: "#c#", label: "c#", method: "POST" },
+        { href: "#python", label: "python", method: "POST" },
+        { href: "#go", label: "go", method: "POST" },
+        { href: "#node.js", label: "node.js", method: "POST" },
+      ],
+    },
+    {
+      title: "راهنمای وب سرویس REST",
       // subtitle: "سرویس ارسال پیامک",
       links: [
         { href: "#send-single", label: "ارسال تکی", method: "POST" },
         { href: "#send-bulk", label: "ارسال گروهی", method: "POST" },
         { href: "#send-p2p", label: "ارسال نظیر به نظیر", method: "POST" },
-      ],
-    },
-    {
-      title: "سرویس اعتبار سنجی",
-      // subtitle: "متد اعتبارسنجی",
-      links: [
+        { href: "#otp-resend", label: "ارسال پیامک OTP جدید", method: "POST" },
         {
           href: "#otp-send",
           label: "ارسال پیامک اعتبار سنجی (OTP)",
           method: "POST",
         },
-        { href: "#otp-resend", label: "ارسال پیامک OTP جدید", method: "POST" },
         {
           href: "#otp-template",
           label: "دریافت پارامترهای قالب OTP",
           method: "GET",
         },
-      ],
-    },
-    {
-      title: "گزارش وضعیت",
-      // subtitle: "وضعیت",
-      links: [
         {
           href: "#status-report",
           label: "وضعیت پیام های ارسالی",
           method: "GET",
         },
-      ],
-    },
-    {
-      title: "پیام های دریافتی",
-      // subtitle: "پیام های دریافتی",
-      links: [
         { href: "#inbox-latest", label: "100 پیام آخر", method: "GET" },
         { href: "#inbox-paged", label: "صفحه بندی", method: "GET" },
       ],
     },
     {
-      title: "سایر",
-      links: [{ href: "#errors", label: "جدول خطاها" }],
+      title: "ماژول ها و افزونه ها",
+      // subtitle: "سرویس ارسال پیامک",
+      links: [
+        { href: "#wordpress", label: "wordpress", method: "POST" },
+        { href: "#digits", label: "digits", method: "POST" },
+      ],
     },
   ];
 
@@ -330,6 +332,10 @@ function App() {
                     </div>
                   </div>
                   <div className="home-base-url-card">
+                    {/* <OperationBox
+                      method="Base"
+                      endpoint="https://gateway.ghasedak.me/"
+                    /> */}
                     <BaseUrlCard url="https://gateway.ghasedak.me/" />
                   </div>
                 </div>
@@ -543,7 +549,7 @@ function App() {
                     </span>
                     <span>ایمیل پشتیبانی:</span>
                     <span className="home-support-value">
-                      support[at]ghasedak-ict.com
+                      support@ghasedak-ict.com
                     </span>
                   </li>
                   <li className="home-support-item">
@@ -570,6 +576,87 @@ function App() {
                   </li>
                 </ul>
               </section>
+            </div>
+          </section>
+          <section id="docs-authorization" className="content-section">
+            <h1>احراز هویت</h1>
+
+            <div className="operation-hero">
+              <div className="operation-hero__text">
+                <p>
+                  برای استفاده از API، باید از روش احراز هویت Bearer Token
+                  استفاده کنید. در این روش، شما باید API Key خود را به عنوان
+                  توکن در هدر درخواست قرار دهید.
+                </p>
+              </div>
+            </div>
+          </section>
+          <section id="errors" className="error-table content-section">
+            <h2>جدول خطاها</h2>
+            <ErrorTable />
+          </section>
+          <section id="php" className="content-section">
+            <h1>php</h1>
+            {/* <div className="operation-hero">
+              <div className="operation-hero__text"> */}
+                <PhpDescription />
+              {/* </div>
+            </div> */}
+          </section>
+          <section id="c#" className="content-section">
+            <h1>c#</h1>
+
+            <div className="operation-hero">
+              <div className="operation-hero__text">
+                <p>توضیحات c#.</p>
+              </div>
+
+              <OperationBox
+                method="POST"
+                endpoint="https://gateway.ghasedak.me/rest/api/v1/WebService/SendSingleSms"
+              />
+            </div>
+          </section>
+          <section id="python" className="content-section">
+            <h1>python</h1>
+
+            <div className="operation-hero">
+              <div className="operation-hero__text">
+                <p>توضیحات python.</p>
+              </div>
+
+              <OperationBox
+                method="POST"
+                endpoint="https://gateway.ghasedak.me/rest/api/v1/WebService/SendSingleSms"
+              />
+            </div>
+          </section>
+          <section id="go" className="content-section">
+            <h1>go</h1>
+
+            <div className="operation-hero">
+              <div className="operation-hero__text">
+                <p>توضیحات go.</p>
+              </div>
+
+              <OperationBox
+                method="POST"
+                endpoint="https://gateway.ghasedak.me/rest/api/v1/WebService/SendSingleSms"
+              />
+            </div>
+          </section>
+          <section id="node.js" className="content-section">
+            <h1>node.js</h1>
+
+            <div className="operation-hero">
+              <div className="operation-hero__text">
+                <p>توضیحات node.js.</p>
+              </div>
+
+              <OperationBox
+                method="POST"
+                endpoint="https://gateway.ghasedak.me/rest/api/v1/WebService/SendSingleSms"
+              />
             </div>
           </section>
 
@@ -629,25 +716,6 @@ function App() {
               theme={theme}
             />
           </section>
-
-          <section id="otp-send" className="content-section">
-            <h1>ارسال پیامک اعتبار سنجی (OTP)</h1>
-            <div className="operation-hero">
-              <div className="operation-hero__text">
-                <p>ارسال کد یکبارمصرف به گیرنده برای تایید هویت یا ورود.</p>
-              </div>
-              <OperationBox
-                method="POST"
-                endpoint="https://gateway.ghasedak.me/rest/api/v1/WebService/SendOtpWithParams"
-              />
-            </div>
-            <ScalarApiReference
-              instanceKey="scalar-otp-send"
-              spec={sendOtpApiSpec}
-              theme={theme}
-            />
-          </section>
-
           <section id="otp-resend" className="content-section">
             <h1>ارسال پیامک OTP جدید</h1>
             <div className="operation-hero">
@@ -662,6 +730,23 @@ function App() {
             <ScalarApiReference
               instanceKey="scalar-otp-resend"
               spec={sendOtpSmsNewApiSpec}
+              theme={theme}
+            />
+          </section>
+          <section id="otp-send" className="content-section">
+            <h1>ارسال پیامک اعتبار سنجی (OTP)</h1>
+            <div className="operation-hero">
+              <div className="operation-hero__text">
+                <p>ارسال کد یکبارمصرف به گیرنده برای تایید هویت یا ورود.</p>
+              </div>
+              <OperationBox
+                method="POST"
+                endpoint="https://gateway.ghasedak.me/rest/api/v1/WebService/SendOtpWithParams"
+              />
+            </div>
+            <ScalarApiReference
+              instanceKey="scalar-otp-send"
+              spec={sendOtpApiSpec}
               theme={theme}
             />
           </section>
@@ -685,7 +770,6 @@ function App() {
               theme={theme}
             />
           </section>
-
           <section id="status-report" className="content-section">
             <h1>وضعیت پیام های ارسالی</h1>
             <div className="operation-hero">
@@ -703,7 +787,6 @@ function App() {
               theme={theme}
             />
           </section>
-
           <section id="inbox-latest" className="content-section">
             <h1>100 پیام آخر</h1>
             <div className="operation-hero">
@@ -739,10 +822,29 @@ function App() {
               theme={theme}
             />
           </section>
-
-          <section id="errors" className="error-table content-section">
-            <h2>جدول خطاها</h2>
-            <ErrorTable />
+          <section id="wordpress" className="content-section">
+            <h1>wordpress</h1>
+            <div className="operation-hero">
+              <div className="operation-hero__text">
+                <p>توضیحات wordpress.</p>
+              </div>
+              <OperationBox
+                method="GET"
+                endpoint="https://gateway.ghasedak.me/rest/api/v1/WebService/CheckSmsStatus"
+              />
+            </div>
+          </section>
+          <section id="digits" className="content-section">
+            <h1>digits</h1>
+            <div className="operation-hero">
+              <div className="operation-hero__text">
+                <p>توضیحات digits.</p>
+              </div>
+              <OperationBox
+                method="GET"
+                endpoint="https://gateway.ghasedak.me/rest/api/v1/WebService/CheckSmsStatus"
+              />
+            </div>
           </section>
         </main>
       </div>

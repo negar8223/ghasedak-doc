@@ -7,7 +7,7 @@ const methodColor: Record<HttpMethod, string> = {
   PATCH: "var(--violet-400)",
   DELETE: "var(--red-500)",
   OPTIONS: "var(--slate-300)",
-  HEAD: "var(--slate-300)"
+  HEAD: "var(--slate-300)",
 };
 
 type Props = {
@@ -17,7 +17,7 @@ type Props = {
 const Badge = ({ method }: Props) => (
   <span
     className="method-badge"
-    style={{ background: methodColor[method], color: "#0b1224" }}
+    style={{ background: methodColor[method], color: "#ffffff" }}
   >
     {method}
   </span>

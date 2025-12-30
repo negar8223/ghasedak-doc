@@ -616,7 +616,7 @@
   --text: #e2e8f0;
   --muted: #94a3b8;
   --blue-500: #3b82f6;
-  --green-500: #22c55e;
+  --green-500: #49cc90;
   --yellow-400: #facc15;
   --violet-400: #a78bfa;
   --red-500: #ef4444;
@@ -836,7 +836,7 @@ a {
 }
 
 .sidebar__link--compact {
-  padding: 8px 10px;
+  padding: 5px 10px;
   border-radius: 10px;
   border: 1px solid transparent;
   transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
@@ -1009,7 +1009,7 @@ a {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #d1d5db;
+  background: #576274;
   z-index: 1;
 }
 

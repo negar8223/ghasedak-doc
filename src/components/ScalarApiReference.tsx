@@ -53,22 +53,36 @@ const ScalarApiReference = ({ spec, instanceKey, theme }: Props) => {
         justify-content: flex-start;
         direction: ltr;
       }
+      
       .section-container{
         background-color:#0f172a;
       }
-      
-      
+      .text-c-3 hover:text-c-1 absolute -top-2 -left-4.5 flex h-[calc(100%+16px)] w-4.5 cursor-pointer items-center justify-center pr-1.5 opacity-0 group-hover:opacity-100 focus-visible:opacity-100{
+        display: none !important;
+      }
+      .property-example-value-list"{
+        color:#0f172a;
+      }
       .markdown{
         display:block;
         text-align:right;
+        direction:rtl;
+        
       }
       .markdown ul {
+        text-align:right;
         margin-right: 20px; 
       }
+      
       .section-header{
         display:flex
       }
+      
+      .headlessui-disclosure-button-scalar-refs-0-33{
+        display:flow !important;
+      }
       .scalar-app .markdown p {
+        color:#c1c1c1 !important;
         text-align: right;
         direction: rtl;
         align-self: flex-start;
@@ -85,7 +99,16 @@ const ScalarApiReference = ({ spec, instanceKey, theme }: Props) => {
         text-align: left;
         direction: ltr;
       }
-      
+      .operation-box{
+        text-align: left;
+        direction: ltr;
+      }
+      .request-body-header{
+        direction:ltr
+      }
+      .ghost-btn {
+        text-align: right
+      }
       
       
     `,

@@ -1,97 +1,98 @@
 export const sendBulkSmsApiSpec = {
-    openapi: "3.1.0",
-    info: {
-      title: "Send Group SMS API",
-      version: "1.0.0",
-      description:
-        "از این متد برای ارسال پیامک گروهی به گیرندگان مختلف استفاده می شود. به این صورت که شماره فرستنده و متن پیام فقط یک شماره می تواند باشد و نیازی نیست به ازای هر گیرنده، یک شماره فرستنده وارد گردد."
+  openapi: "3.1.0",
+  info: {
+    title: "Send Group SMS API",
+    version: "1.0.0",
+    description:
+      "از این متد برای ارسال پیامک گروهی به گیرندگان مختلف استفاده می شود. به این صورت که شماره فرستنده و متن پیام فقط یک شماره می تواند باشد و نیازی نیست به ازای هر گیرنده، یک شماره فرستنده وارد گردد.",
+  },
+  servers: [
+    {
+      url: "https://gateway.ghasedak.me/rest/api/v1",
+      description: "Production server",
     },
-    servers: [
-      {
-        url: "https://gateway.ghasedak.me/rest/api/v1",
-        description: "Production server"
-      }
-    ],
-    paths: {
-      "/WebService/SendBulkSMS": {
-        post: {
-          summary: "ارسال پیامک گروهی",
-          description: "ارسال پیامک گروهی به گیرندگان مختلف با یک شماره فرستنده و یک متن پیام",
-          security: [
-            {
-              ApiKeyAuth: []
-            }
-          ],
-          requestBody: {
-            required: true,
-            content: {
-              "application/json": {
-                schema: {
-                  type: "object",
-                  required: ["receptors", "message"],
-                  properties: {
-                    sendDate: {
-                      type: "string",
-                      format: "date-time",
-                      description:
-                        "تاریخ و زمان دقیق ارسال پیام که اگر قید نشود در همان لحظه پیام ارسال می شود.",
-                      example: "2024-07-03T11:56:28.720Z"
-                    },
-                    lineNumber: {
-                      type: "string",
-                      description:
-                        "شماره فرستنده پیام می باشد، که اگر قید نشود از بین خطوط اختصاصی شما خط با اولویت بالاتر انتخاب می شود.",
-                      example: "21*******"
-                    },
-                    receptors: {
-                      type: "array",
-                      description: "شماره گیرنده‌های پیام می‌باشد.",
-                      items: {
-                        type: "string"
-                      },
-                      example: ["0939*******", "0996*******"]
-                    },
-                    message: {
-                      type: "string",
-                      description: "متنی که باید ارسال شود.",
-                      example: "ارسال پیام گروهی از وب سرویس قاصدک"
-                    },
-                    clientReferenceId: {
-                      type: "string",
-                      description:
-                        "برای تعیین شماره‌ای یکتا از طرف کاربر برای هر پیامک به کار می‌رود و پس از ارسال پیامک می‌توان با متد status کلیه اطلاعات پیام ارسال شده را دریافت کرد.",
-                      example: "1"
-                    },
-                    isVoice: {
-                      type: "boolean",
-                      description: "صوتی بودن یا نبودن پیام را مشخص می‌کند.",
-                      example: false
-                    },
-                    udh: {
-                      type: "boolean",
-                      description:
-                        "برای تعیین نوع ارسال پیام‌ها که می‌تواند 16 یا 8 بیتی باشد و اگر مقدار true پاس داده شود پیام 16 بیتی و اگر مقدار false داده شود پیام 8 بیتی ارسال خواهد شد. این پارامتر فقط برای پیش شماره 9000 اعمال می‌شود.",
-                      example: false
-                    }
-                  },
-                  example: {
-                    sendDate: "2024-07-03T11:56:28.720Z",
-                    lineNumber: "21*******",
-                    receptors: ["0939*******", "0996*******"],
-                    message: "ارسال پیام گروهی از وب سرویس قاصدک",
-                    clientReferenceId: "1",
-                    isVoice: false,
-                    udh: false
-                  }
-                }
-              }
-            }
+  ],
+  paths: {
+    "/WebService/SendBulkSMS": {
+      post: {
+        summary: "ارسال پیامک گروهی",
+        description:
+          "ارسال پیامک گروهی به گیرندگان مختلف با یک شماره فرستنده و یک متن پیام",
+        security: [
+          {
+            ApiKeyAuth: [],
           },
-          "x-codeSamples": [
-            {
-              lang: "curl",
-              label: "curl",
-              source: `curl -X 'POST' \
+        ],
+        requestBody: {
+          required: true,
+          content: {
+            "application/json": {
+              schema: {
+                type: "object",
+                required: ["receptors", "message"],
+                properties: {
+                  sendDate: {
+                    type: "string",
+                    format: "date-time",
+                    description:
+                      "تاریخ و زمان دقیق ارسال پیام که اگر قید نشود در همان لحظه پیام ارسال می شود.",
+                    example: "2024-07-03T11:56:28.720Z",
+                  },
+                  lineNumber: {
+                    type: "string",
+                    description:
+                      "شماره فرستنده پیام می باشد، که اگر قید نشود از بین خطوط اختصاصی شما خط با اولویت بالاتر انتخاب می شود.",
+                    example: "21*******",
+                  },
+                  receptors: {
+                    type: "array",
+                    description: "شماره گیرنده‌های پیام می‌باشد.",
+                    items: {
+                      type: "string",
+                    },
+                    example: ["0939*******", "0996*******"],
+                  },
+                  message: {
+                    type: "string",
+                    description: "متنی که باید ارسال شود.",
+                    example: "ارسال پیام گروهی از وب سرویس قاصدک",
+                  },
+                  clientReferenceId: {
+                    type: "string",
+                    description:
+                      "برای تعیین شماره‌ای یکتا از طرف کاربر برای هر پیامک به کار می‌رود و پس از ارسال پیامک می‌توان با متد status کلیه اطلاعات پیام ارسال شده را دریافت کرد.",
+                    example: "1",
+                  },
+                  // isVoice: {
+                  //   type: "boolean",
+                  //   description: "صوتی بودن یا نبودن پیام را مشخص می‌کند.",
+                  //   example: false
+                  // },
+                  udh: {
+                    type: "boolean",
+                    description:
+                      "برای تعیین نوع ارسال پیام‌ها که می‌تواند 16 یا 8 بیتی باشد و اگر مقدار true پاس داده شود پیام 16 بیتی و اگر مقدار false داده شود پیام 8 بیتی ارسال خواهد شد. این پارامتر فقط برای پیش شماره 9000 اعمال می‌شود.",
+                    example: false,
+                  },
+                },
+                example: {
+                  sendDate: "2024-07-03T11:56:28.720Z",
+                  lineNumber: "21*******",
+                  receptors: ["0939*******", "0996*******"],
+                  message: "ارسال پیام گروهی از وب سرویس قاصدک",
+                  clientReferenceId: "1",
+                  isVoice: false,
+                  udh: false,
+                },
+              },
+            },
+          },
+        },
+        "x-codeSamples": [
+          {
+            lang: "curl",
+            label: "curl",
+            source: `curl -X 'POST' \
     'https://gateway.ghasedak.me/rest/api/v1/WebService/SendBulkSMS' \
     -H 'Content-Type: application/json' \
     -H 'ApiKey: "your-apiKey' \
@@ -105,12 +106,12 @@ export const sendBulkSmsApiSpec = {
       "clientReferenceId": "1",
       "isVoice": false,
       "udh": false
-    }'`
-            },
-            {
-              lang: "csharp",
-              label: "C#",
-              source: `using System;
+    }'`,
+          },
+          {
+            lang: "csharp",
+            label: "C#",
+            source: `using System;
   using System.Net.Http;
   using System.Text;
   using System.Threading.Tasks;
@@ -154,12 +155,12 @@ export const sendBulkSmsApiSpec = {
           response.EnsureSuccessStatusCode();
           Console.WriteLine(await response.Content.ReadAsStringAsync());
       }
-  }`
-            },
-            {
-              lang: "php",
-              label: "PHP",
-              source: `<?php
+  }`,
+          },
+          {
+            lang: "php",
+            label: "PHP",
+            source: `<?php
   
   $curl = curl_init();
   
@@ -193,12 +194,12 @@ export const sendBulkSmsApiSpec = {
   $response = curl_exec($curl);
   
   curl_close($curl);
-  echo $response;`
-            },
-            {
-              lang: "java",
-              label: "Java",
-              source: `import com.google.gson.Gson;
+  echo $response;`,
+          },
+          {
+            lang: "java",
+            label: "Java",
+            source: `import com.google.gson.Gson;
   import okhttp3.*;
   
   import java.io.IOException;
@@ -254,12 +255,12 @@ export const sendBulkSmsApiSpec = {
               System.out.println(response.body().string());
           }
       }
-  }`
-            },
-            {
-              lang: "javascript",
-              label: "Node.js",
-              source: `var request = require('request');
+  }`,
+          },
+          {
+            lang: "javascript",
+            label: "Node.js",
+            source: `var request = require('request');
   var options = {
     method: 'POST',
     url: 'https://gateway.ghasedak.me/rest/api/v1/WebService/SendBulkSMS',
@@ -284,12 +285,12 @@ export const sendBulkSmsApiSpec = {
   request(options, function (error, response) {
     if (error) throw new Error(error);
     console.log(response.body);
-  });`
-            },
-            {
-              lang: "python",
-              label: "Python",
-              source: `import requests
+  });`,
+          },
+          {
+            lang: "python",
+            label: "Python",
+            source: `import requests
   import json
   
   url = "https://gateway.ghasedak.me/rest/api/v1/WebService/SendBulkSMS"
@@ -313,12 +314,12 @@ export const sendBulkSmsApiSpec = {
   
   response = requests.request("POST", url, headers=headers, data=payload)
   
-  print(response.text)`
-            },
-            {
-              lang: "go",
-              label: "Go",
-              source: `package main
+  print(response.text)`,
+          },
+          {
+            lang: "go",
+            label: "Go",
+            source: `package main
   
   import (
       "bytes"
@@ -379,115 +380,117 @@ export const sendBulkSmsApiSpec = {
           return
       }
       fmt.Println(string(body))
-  }`
-            }
-          ],
-          responses: {
-            "200": {
-              description: "",
-              content: {
-                "application/json": {
-                  schema: {
-                    type: "object",
-                    properties: {
-                      isSuccess: {
-                        type: "boolean",
-                        description: "وضعیت پاسخ وب سرویس",
-                        example: true
-                      },
-                      statusCode: {
-                        type: "integer",
-                        description: "کد وضعیت",
-                        example: 200
-                      },
-                      message: {
-                        type: "string",
-                        description: "پیام وضعیت وب سرویس",
-                        example: ""
-                      },
-                      data: {
-                        type: "object",
-                        properties: {
-                          cost: {
-                            type: "integer",
-                            description: "هزینه ارسال پیام",
-                            example: 3537
-                          },
-                          lineNumber: {
-                            type: "string",
-                            description: "شماره خطی که پیام را ارسال می‌کند",
-                            example: "21*******"
-                          },
-                          receptors: {
-                            type: "array",
-                            description: "لیست گیرندگان و شناسه پیام‌های ارسال شده",
-                            items: {
-                              type: "object",
-                              properties: {
-                                receptor: {
-                                  type: "string",
-                                  description: "شماره گیرنده",
-                                  example: "0939*******"
-                                },
-                                messageId: {
-                                  type: "string",
-                                  description: "شناسه پیام ارسالی به گیرنده",
-                                  example: "4248"
-                                }
-                              }
-                            }
-                          },
-                          message: {
-                            type: "string",
-                            description: "متن پیام",
-                            example: "test dotnet package bulk"
-                          },
-                          sendDate: {
-                            type: "string",
-                            format: "date-time",
-                            description: "زمان و تاریخ ارسال پیام",
-                            example: "2024-07-09T14:01:36.6632614+03:30"
-                          }
-                        }
-                      }
+  }`,
+          },
+        ],
+        responses: {
+          "200": {
+            description: "",
+            content: {
+              "application/json": {
+                schema: {
+                  type: "object",
+                  properties: {
+                    isSuccess: {
+                      type: "boolean",
+                      description: "وضعیت پاسخ وب سرویس",
+                      example: true,
                     },
-                    example: {
-                      isSuccess: true,
-                      statusCode: 200,
-                      message: "",
-                      data: {
-                        cost: 3537,
-                        lineNumber: "21*******",
-                        receptors: [
-                          {
-                            receptor: "0939*******",
-                            messageId: "4248"
+                    statusCode: {
+                      type: "integer",
+                      description: "کد وضعیت",
+                      example: 200,
+                    },
+                    message: {
+                      type: "string",
+                      description: "پیام وضعیت وب سرویس",
+                      example: "",
+                    },
+                    data: {
+                      type: "object",
+                      properties: {
+                        cost: {
+                          type: "integer",
+                          description: "هزینه ارسال پیام",
+                          example: 3537,
+                        },
+                        lineNumber: {
+                          type: "string",
+                          description: "شماره خطی که پیام را ارسال می‌کند",
+                          example: "21*******",
+                        },
+                        receptors: {
+                          type: "array",
+                          description:
+                            "لیست گیرندگان و شناسه پیام‌های ارسال شده",
+                          items: {
+                            type: "object",
+                            properties: {
+                              receptor: {
+                                type: "string",
+                                description: "شماره گیرنده",
+                                example: "0939*******",
+                              },
+                              messageId: {
+                                type: "string",
+                                description: "شناسه پیام ارسالی به گیرنده",
+                                example: "4248",
+                              },
+                            },
                           },
-                          {
-                            receptor: "0996*******",
-                            messageId: "4249"
-                          }
-                        ],
-                        message: "test dotnet package bulk",
-                        sendDate: "2024-07-09T14:01:36.6632614+03:30"
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
+                        },
+                        message: {
+                          type: "string",
+                          description: "متن پیام",
+                          example: "test dotnet package bulk",
+                        },
+                        sendDate: {
+                          type: "string",
+                          format: "date-time",
+                          description: "زمان و تاریخ ارسال پیام",
+                          example: "2024-07-09T14:01:36.6632614+03:30",
+                        },
+                      },
+                    },
+                  },
+                  example: {
+                    isSuccess: true,
+                    statusCode: 200,
+                    message: "",
+                    data: {
+                      cost: 3537,
+                      lineNumber: "21*******",
+                      clientReferenceId: "",
+                      receptors: [
+                        {
+                          receptor: "0939*******",
+                          messageId: "4248",
+                        },
+                        {
+                          receptor: "0996*******",
+                          messageId: "4249",
+                        },
+                      ],
+                      message: "test dotnet package bulk",
+                      sendDate: "2024-07-09T14:01:36.6632614+03:30",
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
     },
-    components: {
-      securitySchemes: {
-        ApiKeyAuth: {
-          type: "apiKey",
-          in: "header",
-          name: "ApiKey",
-          description: "کلید شناسه (اجباری)"
-        }
-      }
-    }
-  };
+  },
+  components: {
+    securitySchemes: {
+      ApiKeyAuth: {
+        type: "apiKey",
+        in: "header",
+        name: "ApiKey",
+        description: "کلید شناسه (اجباری)",
+      },
+    },
+  },
+};
