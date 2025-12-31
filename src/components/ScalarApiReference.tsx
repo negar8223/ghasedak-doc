@@ -118,9 +118,11 @@ const ScalarApiReference = ({ spec, instanceKey, theme }: Props) => {
         text-align: right
       }
     .scalar-card-content{
-      background-color:#3e444f !important;
+      background-color:#505865 !important;
     }
-     
+     .scalar-response-card-footer{
+      color:red !important;
+     }
       .scalar-card-footer{
         background-color:#3e444f;
       }
@@ -133,7 +135,12 @@ const ScalarApiReference = ({ spec, instanceKey, theme }: Props) => {
       .operation-path{
         color:#ffffff !important;
       }
-      
+      .tab {
+        margin-left:10px !important
+      }
+      .tab:hover {
+        background-color: #fffff !important;
+      }
     `,
     allowedLanguages: ["Node.js", "Python"],
   } as AnyApiReferenceConfiguration; // ← cast امن به type رسمی پکیج

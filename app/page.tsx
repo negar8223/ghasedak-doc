@@ -26,7 +26,6 @@ import { BaseUrlCard } from "@/src/components/BaseUrlCard";
 import { SdkLanguages } from "@/src/components/SdkLanguages";
 import PhpDescription from "@/src/components/PhpDescription";
 
-
 type NavLink = { href: string; label: string; method?: string };
 type NavGroup = { title: string; subtitle?: string; links: NavLink[] };
 
@@ -741,7 +740,18 @@ function App() {
               theme={theme}
             />
           </section>
-          <section id="wordpress" className="content-section"></section>
+          <section id="wordpress" className="content-section">
+            <h1>wordpress</h1>
+            <div className="operation-hero">
+              <div className="operation-hero__text">
+                <p>توضیحات wordpress.</p>
+              </div>
+              <OperationBox
+                method="POST"
+                endpoint="https://gateway.ghasedak.me/rest/api/v1/WebService/SendSingleSms"
+              />
+            </div>
+          </section>
           <section id="digits" className="content-section"></section>
         </main>
       </div>
