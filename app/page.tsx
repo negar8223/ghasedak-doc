@@ -25,7 +25,6 @@ import ErrorTable from "@/src/components/ErrorTable";
 import { BaseUrlCard } from "@/src/components/BaseUrlCard";
 import { SdkLanguages } from "@/src/components/SdkLanguages";
 import PhpDescription from "@/src/components/PhpDescription";
-import DescriptionOutlinedIcon from "@mui/icons-material/DescriptionOutlined";
 
 
 type NavLink = { href: string; label: string; method?: string };
@@ -35,7 +34,6 @@ function App() {
   const navGroups: NavGroup[] = [
     {
       title: "نمای کلی مستندات",
-      
       // subtitle: "نمای کلی مستندات API",
       links: [
         { href: "#docs-overview", label: "نمای کلی مستندات" },
@@ -45,7 +43,6 @@ function App() {
     },
     {
       title: "کتابخانه ها و sdkها",
-      icon: DescriptionOutlinedIcon,
       // subtitle: "سرویس ارسال پیامک",
       links: [
         { href: "#php", label: "php", method: "POST" },
