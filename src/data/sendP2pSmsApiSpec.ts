@@ -12,10 +12,17 @@ export const sendP2pSmsApiSpec = {
       description: "Production server",
     },
   ],
+  tags: [
+    {
+      name: "ارسال گروهی نظیر به نظیر",
+      description:
+        "از این متد برای ارسال پیامک به‌صورت گروهی استفاده می‌شود؛ به‌طوری‌که امکان ارسال پیام‌ها با متون مختلف و همچنین شماره‌های فرستنده و گیرنده‌ی متفاوت برای هر پیام وجود دارد.",
+    },
+  ],
   paths: {
     "/WebService/SendPairToPairSMS": {
       post: {
-        summary: "",
+        summary: "پارامترهای ورودی",
         description: "",
         security: [
           {

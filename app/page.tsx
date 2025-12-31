@@ -25,6 +25,8 @@ import ErrorTable from "@/src/components/ErrorTable";
 import { BaseUrlCard } from "@/src/components/BaseUrlCard";
 import { SdkLanguages } from "@/src/components/SdkLanguages";
 import PhpDescription from "@/src/components/PhpDescription";
+import DescriptionOutlinedIcon from "@mui/icons-material/DescriptionOutlined";
+
 
 type NavLink = { href: string; label: string; method?: string };
 type NavGroup = { title: string; subtitle?: string; links: NavLink[] };
@@ -33,6 +35,7 @@ function App() {
   const navGroups: NavGroup[] = [
     {
       title: "نمای کلی مستندات",
+      
       // subtitle: "نمای کلی مستندات API",
       links: [
         { href: "#docs-overview", label: "نمای کلی مستندات" },
@@ -42,6 +45,7 @@ function App() {
     },
     {
       title: "کتابخانه ها و sdkها",
+      icon: DescriptionOutlinedIcon,
       // subtitle: "سرویس ارسال پیامک",
       links: [
         { href: "#php", label: "php", method: "POST" },
@@ -288,7 +292,13 @@ function App() {
                             {link.label}
                           </span>
                           {link.method && (
-                            <span className="sidebar__link-method">
+                            <span
+                              className={`sidebar__link-method ${
+                                link.method.toLowerCase() === "post"
+                                  ? "post"
+                                  : "get"
+                              }`}
+                            >
                               {link.method}
                             </span>
                           )}
@@ -592,15 +602,22 @@ function App() {
             </div>
           </section>
           <section id="errors" className="error-table content-section">
-            <h2>جدول خطاها</h2>
+            <div className="error-text">
+              <h2>جدول خطاها</h2>
+              <h6>
+                چنانچه درخواست‌های ارسالی شما با خطای خاصی مواجه شد، برای آگاهی
+                از دلایل آن می‌توانید از جدول خطاها کمک بگیرید.
+              </h6>
+            </div>
+
             <ErrorTable />
           </section>
           <section id="php" className="content-section">
             <h1>php</h1>
             {/* <div className="operation-hero">
               <div className="operation-hero__text"> */}
-                <PhpDescription />
-              {/* </div>
+            <PhpDescription />
+            {/* </div>
             </div> */}
           </section>
           <section id="c#" className="content-section">
@@ -661,19 +678,6 @@ function App() {
           </section>
 
           <section id="send-single" className="content-section">
-            <h1>ارسال تکی</h1>
-
-            <div className="operation-hero">
-              <div className="operation-hero__text">
-                <p>از این متد برای ارسال پیامک به صورت تکی استفاده می شود.</p>
-              </div>
-
-              <OperationBox
-                method="POST"
-                endpoint="https://gateway.ghasedak.me/rest/api/v1/WebService/SendSingleSms"
-              />
-            </div>
-
             <ScalarApiReference
               instanceKey="scalar-send-single"
               spec={sendSingleSmsApiSpec}
@@ -682,16 +686,6 @@ function App() {
           </section>
 
           <section id="send-bulk" className="content-section">
-            <h1>ارسال گروهی</h1>
-            <div className="operation-hero">
-              <div className="operation-hero__text">
-                <p>ارسال پیامک به چند گیرنده به صورت یکجا.</p>
-              </div>
-              <OperationBox
-                method="POST"
-                endpoint="https://gateway.ghasedak.me/rest/api/v1/WebService/SendBulkSMS"
-              />
-            </div>
             <ScalarApiReference
               instanceKey="scalar-send-bulk"
               spec={sendBulkSmsApiSpec}
@@ -700,16 +694,6 @@ function App() {
           </section>
 
           <section id="send-p2p" className="content-section">
-            <h1>ارسال نظیر به نظیر</h1>
-            <div className="operation-hero">
-              <div className="operation-hero__text">
-                <p>ارسال پیامک با محتوای شخصی‌سازی شده برای هر گیرنده.</p>
-              </div>
-              <OperationBox
-                method="POST"
-                endpoint="https://gateway.ghasedak.me/rest/api/v1/WebService/SendPairToPairSMS"
-              />
-            </div>
             <ScalarApiReference
               instanceKey="scalar-send-p2p"
               spec={sendP2pSmsApiSpec}
@@ -717,16 +701,6 @@ function App() {
             />
           </section>
           <section id="otp-resend" className="content-section">
-            <h1>ارسال پیامک OTP جدید</h1>
-            <div className="operation-hero">
-              <div className="operation-hero__text">
-                <p>ارسال مجدد کد یکبارمصرف در صورت انقضا یا عدم دریافت.</p>
-              </div>
-              <OperationBox
-                method="POST"
-                endpoint="https://gateway.ghasedak.me/rest/api/v1/WebService/SendOtpSMS"
-              />
-            </div>
             <ScalarApiReference
               instanceKey="scalar-otp-resend"
               spec={sendOtpSmsNewApiSpec}
@@ -734,16 +708,6 @@ function App() {
             />
           </section>
           <section id="otp-send" className="content-section">
-            <h1>ارسال پیامک اعتبار سنجی (OTP)</h1>
-            <div className="operation-hero">
-              <div className="operation-hero__text">
-                <p>ارسال کد یکبارمصرف به گیرنده برای تایید هویت یا ورود.</p>
-              </div>
-              <OperationBox
-                method="POST"
-                endpoint="https://gateway.ghasedak.me/rest/api/v1/WebService/SendOtpWithParams"
-              />
-            </div>
             <ScalarApiReference
               instanceKey="scalar-otp-send"
               spec={sendOtpApiSpec}
@@ -752,18 +716,6 @@ function App() {
           </section>
 
           <section id="otp-template" className="content-section">
-            <h1>دریافت پارامترهای قالب OTP</h1>
-            <div className="operation-hero">
-              <div className="operation-hero__text">
-                <p>
-                  دریافت اطلاعات و پارامترهای قالب ارسال OTP برای یکپارچگی بهتر.
-                </p>
-              </div>
-              <OperationBox
-                method="GET"
-                endpoint="https://gateway.ghasedak.me/rest/api/v1/WebService/GetOtpTemplateParameters"
-              />
-            </div>
             <ScalarApiReference
               instanceKey="scalar-otp-template"
               spec={otpTemplateParamsApiSpec}
@@ -771,16 +723,6 @@ function App() {
             />
           </section>
           <section id="status-report" className="content-section">
-            <h1>وضعیت پیام های ارسالی</h1>
-            <div className="operation-hero">
-              <div className="operation-hero__text">
-                <p>مشاهده و پیگیری وضعیت پیام های ارسال شده.</p>
-              </div>
-              <OperationBox
-                method="GET"
-                endpoint="https://gateway.ghasedak.me/rest/api/v1/WebService/CheckSmsStatus"
-              />
-            </div>
             <ScalarApiReference
               instanceKey="scalar-status-report"
               spec={outboxStatusApiSpec}
@@ -788,16 +730,6 @@ function App() {
             />
           </section>
           <section id="inbox-latest" className="content-section">
-            <h1>100 پیام آخر</h1>
-            <div className="operation-hero">
-              <div className="operation-hero__text">
-                <p>نمایش آخرین ۱۰۰ پیام دریافتی برای بررسی سریع.</p>
-              </div>
-              <OperationBox
-                method="GET"
-                endpoint="https://gateway.ghasedak.me/rest/api/v1/WebService/GetReceivedSmses?lineNumber=21*******&isRead=false"
-              />
-            </div>
             <ScalarApiReference
               instanceKey="scalar-inbox-latest"
               spec={latest100ApiSpec}
@@ -806,46 +738,14 @@ function App() {
           </section>
 
           <section id="inbox-paged" className="content-section">
-            <h1>صفحه بندی</h1>
-            <div className="operation-hero">
-              <div className="operation-hero__text">
-                <p>مرور پیام های دریافتی با قابلیت صفحه بندی و فیلتر.</p>
-              </div>
-              <OperationBox
-                method="GET"
-                endpoint="https://gateway.ghasedak.me/rest/api/v1/WebService/GetReceivedSmsesPaging?lineNumber=21*******&isRead=true&startDate=2024-01-01&endDate=2024-02-02&pageIndex=1&pageSize=10"
-              />
-            </div>
             <ScalarApiReference
               instanceKey="scalar-inbox-paged"
               spec={paginatedApiSpec}
               theme={theme}
             />
           </section>
-          <section id="wordpress" className="content-section">
-            <h1>wordpress</h1>
-            <div className="operation-hero">
-              <div className="operation-hero__text">
-                <p>توضیحات wordpress.</p>
-              </div>
-              <OperationBox
-                method="GET"
-                endpoint="https://gateway.ghasedak.me/rest/api/v1/WebService/CheckSmsStatus"
-              />
-            </div>
-          </section>
-          <section id="digits" className="content-section">
-            <h1>digits</h1>
-            <div className="operation-hero">
-              <div className="operation-hero__text">
-                <p>توضیحات digits.</p>
-              </div>
-              <OperationBox
-                method="GET"
-                endpoint="https://gateway.ghasedak.me/rest/api/v1/WebService/CheckSmsStatus"
-              />
-            </div>
-          </section>
+          <section id="wordpress" className="content-section"></section>
+          <section id="digits" className="content-section"></section>
         </main>
       </div>
 

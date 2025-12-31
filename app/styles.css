@@ -34,9 +34,9 @@
 }
 
 .error-banner--warning {
-  background: #fef3c7;
-  border: 1px solid #fcd34d;
-  color: #92400e;
+  background: #303452;
+  border: 1px solid #101521;
+  color: #f3ece8;
 }
 
 .error-banner--error {
@@ -135,12 +135,21 @@
   color: var(--muted);
   font-size: clamp(0.875rem, 1.5vw, 0.9rem);
 }
+.error-text {
+  padding: 10px;
+}
 
 /* Home overview */
 .home-page {
   display: flex;
   flex-direction: column;
   gap: 32px;
+}
+.api-reference,
+.api-description,
+.markdown-body {
+  direction: rtl;
+  text-align: right;
 }
 
 .home-hero {
@@ -198,7 +207,7 @@
   position: relative;
   background: linear-gradient(
     145deg,
-    rgba(99, 102, 241, 0.12),
+    rgba(240, 240, 240, 0.12),
     rgba(14, 165, 233, 0.12)
   );
   border: 1px solid rgba(99, 102, 241, 0.3);
@@ -609,9 +618,9 @@
   color-scheme: dark;
   font-family: "IRANSans", "Inter", "Segoe UI", system-ui, -apple-system,
     sans-serif !important;
-  --bg: #0b1224;
-  --panel: #0f172a;
-  --panel-2: #111a2e;
+  --bg: #101521;
+  --panel: #101521;
+  --panel-2: #101521;
   --border: #1f2a3c;
   --text: #e2e8f0;
   --muted: #94a3b8;
@@ -645,6 +654,7 @@
 
 html {
   scroll-behavior: smooth;
+  color: red;
 }
 
 body {
@@ -817,8 +827,9 @@ a {
 }
 
 .sidebar {
+  width: 320px;
   background: var(--panel);
-  border-right: 1px solid var(--border);
+  border-left: 3px solid rgb(57, 57, 57);
   padding: 20px;
   position: sticky;
   top: 56px;
@@ -826,7 +837,9 @@ a {
   overflow-y: auto;
   transition: transform 0.2s ease;
 }
-
+.sidebar::-webkit-scrollbar {
+  width: 4px;
+}
 .sidebar--compact {
   padding: 14px;
 }
@@ -864,14 +877,20 @@ a {
 }
 
 .sidebar__link-method {
-  padding: 2px 8px;
   border-radius: 999px;
-  border: 1px solid var(--border);
   font-size: 11px;
-  background: var(--panel-2);
-  color: var(--text);
   min-width: 42px;
   text-align: center;
+  border: none;
+  background: none;
+}
+
+.sidebar__link-method.post {
+  color: #10b981;
+}
+
+.sidebar__link-method.get {
+  color: #3b82f6;
 }
 
 .sidebar__brand {
@@ -1003,11 +1022,11 @@ a {
 .sidebar__link::before {
   content: "";
   position: absolute;
-  right: -16px;
+  right: -14px;
   top: 50%;
   transform: translateY(-50%);
-  width: 8px;
-  height: 8px;
+  width: 5px;
+  height: 5px;
   border-radius: 50%;
   background: #576274;
   z-index: 1;
@@ -1030,12 +1049,13 @@ a {
 
 .content-section {
   padding: 12px 0;
+  max-width: 100%;
 }
 
 .content-section:not(:last-child) {
-  border-bottom: 1px solid var(--border);
-  margin-bottom: 28px;
-  padding-bottom: 28px;
+  /* border-bottom: 1px solid var(--border); */
+  margin-bottom: 0px;
+  padding-bottom: 0px;
 }
 
 .hero {
@@ -1129,7 +1149,7 @@ a {
 }
 
 .tag-section {
-  margin-top: 40px;
+  margin-top: 20px;
 }
 
 .tag-section__header {
@@ -1201,6 +1221,7 @@ a {
 }
 
 .method-badge {
+  display: none;
   padding: 6px 10px;
   border-radius: 999px;
   font-weight: 700;
@@ -1314,7 +1335,7 @@ a {
 }
 
 .scalar-api-reference {
-  margin-top: 24px;
+  margin-top: 0px;
   direction: ltr;
   text-align: left;
   font-family: "IRANSans", "Inter", "Segoe UI", system-ui, -apple-system,
@@ -1435,10 +1456,10 @@ a {
 
   .sidebar-backdrop {
     position: fixed;
-    inset: 52px 0 0 0;
+    inset: 0;
     background: rgba(0, 0, 0, 0.45);
-    backdrop-filter: blur(2px);
-    z-index: 1050;
+    /* backdrop-filter: blur(2px); */
+    z-index: 999;
   }
 
   .content {

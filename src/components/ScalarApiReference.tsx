@@ -43,7 +43,15 @@ const ScalarApiReference = ({ spec, instanceKey, theme }: Props) => {
         box-shadow: none !important;
       }
       .section-columns {
-        direction:rtl
+        direction:rtl;
+        width:100%;
+      }
+      .section-content > .section-columns:first-of-type {
+        display: block !important;
+      }
+      
+      .section-content > .section-columns:not(:first-of-type) {
+        display: flex;
       }
       .section-header-wrapper {
         direction:rtl
@@ -55,7 +63,7 @@ const ScalarApiReference = ({ spec, instanceKey, theme }: Props) => {
       }
       
       .section-container{
-        background-color:#0f172a;
+        background-color:#101521;
       }
       .text-c-3 hover:text-c-1 absolute -top-2 -left-4.5 flex h-[calc(100%+16px)] w-4.5 cursor-pointer items-center justify-center pr-1.5 opacity-0 group-hover:opacity-100 focus-visible:opacity-100{
         display: none !important;
@@ -109,7 +117,22 @@ const ScalarApiReference = ({ spec, instanceKey, theme }: Props) => {
       .ghost-btn {
         text-align: right
       }
-      
+    .scalar-card-content{
+      background-color:#3e444f !important;
+    }
+     
+      .scalar-card-footer{
+        background-color:#3e444f;
+      }
+      .scalar-card-content overflow-auto grid flex-1{
+        background-color:#3e444f !important;
+      }
+      .scalar-code-block{
+        background-color:#3e444f !important;
+      }
+      .operation-path{
+        color:#ffffff !important;
+      }
       
     `,
     allowedLanguages: ["Node.js", "Python"],
