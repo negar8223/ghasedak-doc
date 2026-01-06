@@ -183,6 +183,42 @@ const ScalarApiReference = ({ spec, instanceKey, theme }: Props) => {
   text-align: right;
   margin-top: 10px;
 }
+.references-layout[data-v-4529c98b]{
+background-color:#101521 !important
+}
+.references-rendered[data-v-4529c98b]{
+  background-color:#101521 !important
+}
+.property-example-label{
+  display:none;
+}
+// button.schema-card-title[data-v-7829fdfd] {
+//   color: transparent;       /* متن اصلی مخفی */
+//   font-size: 0;             /* متن اصلی کاملا پنهان میشه */
+//   position: relative;
+//   overflow: hidden;         /* برای جلوگیری از هرگونه برون‌ریزی */
+//   width:100px;
+
+// }
+
+// button.schema-card-title[data-v-7829fdfd]::after {
+//   content: "سلاااام";      /* متن دلخواه */
+//   font-size: 16px;          /* اندازه متن جدید */
+//   color: #939393;             /* رنگ پیش‌فرض */
+//   position: absolute;
+//   top: 50%;
+//   left: 50%;
+//   transform: translate(-50%, -50%);
+//   pointer-events: none;     /* اجازه نمی‌ده hover روی ::after اثر بذاره */
+//   transition: color 0.3s;
+// }
+
+// button.schema-card-title[data-v-7829fdfd]:hover::after {
+//   color: white;              /* رنگ متن هنگام هاور */
+// }
+
+
+
 
     `,
     allowedLanguages: ["Node.js", "Python"],

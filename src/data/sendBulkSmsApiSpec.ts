@@ -391,7 +391,7 @@ export const sendBulkSmsApiSpec = {
         ],
         responses: {
           "200": {
-            description: "",
+            description: "ارسال موفق",
             content: {
               "application/json": {
                 schema: {
@@ -480,6 +480,47 @@ export const sendBulkSmsApiSpec = {
                       message: "test dotnet package bulk",
                       sendDate: "2024-07-09T14:01:36.6632614+03:30",
                     },
+                  },
+                },
+              },
+            },
+          },
+          "400": {
+            description: "ارسال ناموفق.",
+            content: {
+              "application/json": {
+                schema: {
+                  type: "object",
+                  properties: {
+                    isSuccess: {
+                      type: "boolean",
+                      example: false,
+                    },
+                    statusCode: {
+                      type: "integer",
+                      example: 401,
+                    },
+                    message: {
+                      type: "string",
+                      example: "",
+                    },
+                    data: {
+                      type: "null",
+                    },
+                  },
+                },
+                example: {
+                  isSuccess: false,
+                  statusCode: 200,
+                  message: "",
+                  data: {
+                    receptors: "21*******",
+                    lineNumber: "21*******",
+                    cost: 3537,
+                    messageId: "4248",
+                    clientReferenceId: "req-001",
+                    message: "test dotnet package bulk",
+                    sendDate: "2024-07-09T14:01:36.6632614+03:30",
                   },
                 },
               },

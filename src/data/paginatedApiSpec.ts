@@ -564,6 +564,7 @@ export const paginatedApiSpec = {
         ],
         responses: {
           "200": {
+            description: "ارسال موفق",
             content: {
               "application/json": {
                 schema: {
@@ -672,7 +673,7 @@ export const paginatedApiSpec = {
             },
           },
           "400": {
-            description: "درخواست نامعتبر",
+            description: "ارسال ناموفق.",
             content: {
               "application/json": {
                 schema: {
@@ -680,60 +681,33 @@ export const paginatedApiSpec = {
                   properties: {
                     isSuccess: {
                       type: "boolean",
-                      description: "وضعیت پاسخ وب سرویس",
+                      example: false,
                     },
                     statusCode: {
                       type: "integer",
-                      description: "کد وضعیت",
+                      example: 401,
                     },
                     message: {
                       type: "string",
-                      description: "پیام خطا",
+                      example: "",
+                    },
+                    data: {
+                      type: "null",
                     },
                   },
                 },
-                examples: {
-                  example1: {
-                    summary: "نمونه خطای 400",
-                    value: {
-                      isSuccess: false,
-                      statusCode: 400,
-                      message: "پارامترهای ورودی نامعتبر است",
-                    },
-                  },
-                },
-              },
-            },
-          },
-          "500": {
-            description: "خطای سرور",
-            content: {
-              "application/json": {
-                schema: {
-                  type: "object",
-                  properties: {
-                    isSuccess: {
-                      type: "boolean",
-                      description: "وضعیت پاسخ وب سرویس",
-                    },
-                    statusCode: {
-                      type: "integer",
-                      description: "کد وضعیت",
-                    },
-                    message: {
-                      type: "string",
-                      description: "پیام خطا",
-                    },
-                  },
-                },
-                examples: {
-                  example1: {
-                    summary: "نمونه خطای 500",
-                    value: {
-                      isSuccess: false,
-                      statusCode: 500,
-                      message: "خطای داخلی سرور",
-                    },
+                example: {
+                  isSuccess: false,
+                  statusCode: 200,
+                  message: "",
+                  data: {
+                    receptors: "21*******",
+                    lineNumber: "21*******",
+                    cost: 3537,
+                    messageId: "4248",
+                    clientReferenceId: "req-001",
+                    message: "test dotnet package bulk",
+                    sendDate: "2024-07-09T14:01:36.6632614+03:30",
                   },
                 },
               },
