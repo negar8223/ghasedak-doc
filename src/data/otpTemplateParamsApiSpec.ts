@@ -20,7 +20,7 @@ export const otpTemplateParamsApiSpec = {
   ],
   tags: [
     {
-      name: "ارسال پیامک OTP جدید",
+      name: "ارسال پیامک اعتبارسنجی",
       description: `
 دریافت لیست پارامترهای تعریف شده در قالب OTP و متن پیام  
   این متد به شما کمک میکند تا:
