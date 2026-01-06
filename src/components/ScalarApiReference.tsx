@@ -53,6 +53,10 @@ const ScalarApiReference = ({ spec, instanceKey, theme }: Props) => {
       .section-content > .section-columns:not(:first-of-type) {
         display: flex;
       }
+      .section{
+        padding-top:70px !important;
+        padding-bottom:40px !important;
+      }
       .section-header-wrapper {
         direction:rtl
       }
@@ -81,7 +85,9 @@ const ScalarApiReference = ({ spec, instanceKey, theme }: Props) => {
         text-align:right;
         margin-right: 20px; 
       }
-      
+      .markdown h4{
+        text-align: right !important;
+      }
       .section-header{
         display:flex
       }
@@ -90,7 +96,7 @@ const ScalarApiReference = ({ spec, instanceKey, theme }: Props) => {
         display:flow !important;
       }
       .scalar-app .markdown p {
-        color:#c1c1c1 !important;
+        color:#fffff !important;
         text-align: right;
         direction: rtl;
         align-self: flex-start;
@@ -141,9 +147,46 @@ const ScalarApiReference = ({ spec, instanceKey, theme }: Props) => {
       .tab:hover {
         background-color: #fffff !important;
       }
+      .section[data-v-be4443e9]:has( ~ div.contents) {
+        border-bottom: 5px !important;
+      }
+      .parameter-item-icon {
+        margin-left:45px
+      }
+
+      // .text-c-1 {
+      //   font-size: 0 !important; /* متن اصلی مخفی می‌شود */
+      //   text-align:right !important;
+      // }
+      // .text-c-1 leading-[1.45]{
+      //   display:none;
+      // }
+      // .text-c-1::after {
+      //   margin-top:10px;
+      //   content: "پارامترهای خروجی";
+      //   font-size: 20px;
+      //   font-weight: bold;
+      // }
+      // .mt-6{
+      //   margin-top:50px !important
+      // }
+      /* فقط تیتر Responses */
+.mt-6:has(> ul[aria-label="Responses"]) > .text-c-1 {
+  font-size: 0 !important;
+}
+
+.mt-6:has(> ul[aria-label="Responses"]) > .text-c-1::after {
+  content: "پارامترهای خروجی";
+  font-size: 20px;
+  font-weight: bold;
+  display: block;
+  text-align: right;
+  margin-top: 10px;
+}
+
     `,
     allowedLanguages: ["Node.js", "Python"],
-  } as AnyApiReferenceConfiguration; // ← cast امن به type رسمی پکیج
+  } as AnyApiReferenceConfiguration;
 
   return (
     <div className="scalar-api-reference">

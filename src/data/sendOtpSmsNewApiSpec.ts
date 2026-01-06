@@ -1,64 +1,75 @@
 export const sendOtpSmsNewApiSpec = {
-    openapi: "3.1.0",
-    info: {
-      title: "ارسال پیامک OTP جدید - Ghasedak SMS API",
-      version: "1.0.0",
-      description: "از این متد برای ارسال پیامک OTP با استفاده از قالب‌های از پیش تعریف شده استفاده می‌شود.",
-      contact: {
-        name: "پشتیبانی قاصدک",
-        email: "support@ghasedak-ict.com",
-        url: "https://ghasedak.me"
-      }
+  openapi: "3.1.0",
+  info: {
+    title: "ارسال پیامک OTP جدید - Ghasedak SMS API",
+    version: "1.0.0",
+    description:
+      "از این متد برای ارسال پیامک OTP با استفاده از قالب‌های از پیش تعریف شده استفاده می‌شود.",
+    contact: {
+      name: "پشتیبانی قاصدک",
+      email: "support@ghasedak-ict.com",
+      url: "https://ghasedak.me",
     },
-    servers: [
-      {
-        url: "https://gateway.ghasedak.me/rest/api/v1",
-        description: "سرور اصلی قاصدک"
-      }
-    ],
-    paths: {
-      "/WebService/SendOtpSMS": {
-        post: {
-          summary: "ارسال پیامک OTP جدید",
-          description: `ارسال پیامک OTP با قابلیت‌های پیشرفته.
+  },
+  servers: [
+    {
+      url: "https://gateway.ghasedak.me/rest/api/v1",
+      description: "سرور اصلی قاصدک",
+    },
+  ],
+  tags: [
+    {
+      name: "ارسال پیامک OTP جدید",
+      description: `
+  متد ارسال پیامک OTP با قابلیت‌های پیشرفته.
   
   این متد امکانات زیر را فراهم می‌کند:
   - ارسال همزمان به چندین گیرنده
   - استفاده از قالب‌های سفارشی
   - زمان‌بندی ارسال
   - ارسال صوتی
-  - ردیابی با شناسه محلی`,
-          security: [
-            {
-              ApiKey: []
-            }
-          ],
-          parameters: [
-            {
-              name: "ApiKey",
-              in: "header",
-              required: true,
-              description: "کلید احراز هویت لازم برای ارسال درخواست.",
-              schema: {
-                type: "string"
-              }
+  - ردیابی با شناسه محلی
+      `,
+    },
+  ],
+
+  paths: {
+    "/WebService/SendOtpSMS": {
+      post: {
+        summary: "پارامترهای ورودی",
+        description: "",
+        security: [
+          {
+            ApiKey: [],
+          },
+        ],
+        parameters: [
+          {
+            name: "ApiKey",
+            in: "header",
+            required: true,
+            description: "کلید احراز هویت لازم برای ارسال درخواست.",
+            schema: {
+              type: "string",
             },
-            {
-              name: "Content-Type",
-              in: "header",
-              required: true,
-              description: "برای ارسال بدنه‌ی JSON مقدار باید application/json باشد.",
-              schema: {
-                type: "string",
-                example: "application/json"
-              }
-            }
-          ],
-          "x-code-samples": [
-            {
-              lang: "curl",
-              label: "cURL",
-              source: `curl -X POST "https://gateway.ghasedak.me/rest/api/v1/WebService/SendOtpSMS" \\
+          },
+          {
+            name: "Content-Type",
+            in: "header",
+            required: true,
+            description:
+              "برای ارسال بدنه‌ی JSON مقدار باید application/json باشد.",
+            schema: {
+              type: "string",
+              example: "application/json",
+            },
+          },
+        ],
+        "x-code-samples": [
+          {
+            lang: "curl",
+            label: "cURL",
+            source: `curl -X POST "https://gateway.ghasedak.me/rest/api/v1/WebService/SendOtpSMS" \\
     -H "Content-Type: application/json" \\
     -H "ApiKey: your-api-key-here" \\
     -d '{
@@ -78,12 +89,12 @@ export const sendOtpSmsNewApiSpec = {
       ],
       "udh": false,
       "isVoice": false
-    }'`
-            },
-            {
-              lang: "php",
-              label: "PHP",
-              source: `<?php
+    }'`,
+          },
+          {
+            lang: "php",
+            label: "PHP",
+            source: `<?php
   $curl = curl_init();
   
   $data = [
@@ -132,12 +143,12 @@ export const sendOtpSmsNewApiSpec = {
           echo "موفق! هزینه کل: " . $result['data']['totalCost'];
       }
   }
-  ?>`
-            },
-            {
-              lang: "javascript",
-              label: "Node.js",
-              source: `const axios = require('axios');
+  ?>`,
+          },
+          {
+            lang: "javascript",
+            label: "Node.js",
+            source: `const axios = require('axios');
   
   const sendOTP = async () => {
     try {
@@ -182,12 +193,12 @@ export const sendOtpSmsNewApiSpec = {
     }
   };
   
-  sendOTP();`
-            },
-            {
-              lang: "python",
-              label: "Python",
-              source: `import requests
+  sendOTP();`,
+          },
+          {
+            lang: "python",
+            label: "Python",
+            source: `import requests
   import json
   
   url = "https://gateway.ghasedak.me/rest/api/v1/WebService/SendOtpSMS"
@@ -231,12 +242,12 @@ export const sendOtpSmsNewApiSpec = {
   except requests.exceptions.RequestException as e:
       print(f"خطا: {e}")
       if hasattr(e, 'response') and e.response is not None:
-          print(e.response.text)`
-            },
-            {
-              lang: "csharp",
-              label: "C#",
-              source: `using System;
+          print(e.response.text)`,
+          },
+          {
+            lang: "csharp",
+            label: "C#",
+            source: `using System;
   using System.Net.Http;
   using System.Text;
   using System.Text.Json;
@@ -291,12 +302,12 @@ export const sendOtpSmsNewApiSpec = {
       {
           await SendOTP();
       }
-  }`
-            },
-            {
-              lang: "java",
-              label: "Java",
-              source: `import okhttp3.*;
+  }`,
+          },
+          {
+            lang: "java",
+            label: "Java",
+            source: `import okhttp3.*;
   import org.json.JSONArray;
   import org.json.JSONObject;
   import java.io.IOException;
@@ -357,12 +368,12 @@ export const sendOtpSmsNewApiSpec = {
               System.out.println("موفق: " + responseBody);
           }
       }
-  }`
-            },
-            {
-              lang: "go",
-              label: "Go",
-              source: `package main
+  }`,
+          },
+          {
+            lang: "go",
+            label: "Go",
+            source: `package main
   
   import (
       "bytes"
@@ -446,223 +457,225 @@ export const sendOtpSmsNewApiSpec = {
       if err := sendOTP(); err != nil {
           fmt.Printf("خطا: %v\\n", err)
       }
-  }`
-            }
-          ],
-          requestBody: {
-            required: true,
+  }`,
+          },
+        ],
+        requestBody: {
+          required: true,
+          content: {
+            "application/json": {
+              schema: {
+                title: "Body",
+                type: "object",
+                required: ["receptors", "templateName", "inputs"],
+                properties: {
+                  sendDate: {
+                    type: "string",
+                    format: "date-time",
+                    description:
+                      "تاریخ و زمان دقیق ارسال پیام که اگر قید نشود در همان لحظه OTP ارسال می شود.",
+                    example: "2024-12-25T09:51:45Z",
+                  },
+                  receptors: {
+                    type: "array",
+                    description: "لیست گیرندگان پیام",
+                    items: {
+                      type: "object",
+                      required: ["mobile"],
+                      properties: {
+                        mobile: {
+                          type: "string",
+                          description: "شماره گیرنده پیام",
+                          example: "0919********",
+                        },
+                        clientReferenceId: {
+                          type: "string",
+                          description:
+                            "برای تعیین شماره ای یکتا از طرف کاربر برای هر پیامک به کار می رود",
+                          example: "1",
+                        },
+                      },
+                    },
+                  },
+                  templateName: {
+                    type: "string",
+                    description: "نام قالب",
+                    example: "Ghasedak",
+                  },
+                  inputs: {
+                    type: "array",
+                    description: "پارامترهای ورودی قالب",
+                    items: {
+                      type: "object",
+                      required: ["param", "value"],
+                      properties: {
+                        param: {
+                          type: "string",
+                          description: "نام پارامتر ورودی",
+                          example: "Code",
+                        },
+                        value: {
+                          type: "string",
+                          description: "مقدار پارامتر ورودی",
+                          example: "1234",
+                        },
+                      },
+                    },
+                  },
+                  udh: {
+                    type: "boolean",
+                    description:
+                      "برای تعیین نوع ارسال پیام ها که می تواند 16 یا 8 بیتی باشد. این پارامتر فقط برای پیش شماره 9000 اعمال می شود.",
+                    example: false,
+                  },
+                  isVoice: {
+                    type: "boolean",
+                    description: "صوتی بودن یا نبودن پیام را مشخص می کند.",
+                    example: false,
+                  },
+                },
+              },
+              examples: {
+                example1: {
+                  summary: "نمونه درخواست",
+                  value: {
+                    sendDate: "2024-12-25T09:51:45Z",
+                    receptors: [
+                      {
+                        mobile: "0919********",
+                        clientReferenceId: "1",
+                      },
+                      {
+                        mobile: "0937********",
+                        clientReferenceId: "2",
+                      },
+                    ],
+                    templateName: "Ghasedak",
+                    inputs: [
+                      {
+                        param: "Code",
+                        value: "1234",
+                      },
+                    ],
+                    udh: false,
+                    isVoice: false,
+                  },
+                },
+              },
+            },
+          },
+        },
+        responses: {
+          "200": {
             content: {
               "application/json": {
                 schema: {
-                  title: "Body",
                   type: "object",
-                  required: ["receptors", "templateName", "inputs"],
                   properties: {
-                    sendDate: {
-                      type: "string",
-                      format: "date-time",
-                      description: "تاریخ و زمان دقیق ارسال پیام که اگر قید نشود در همان لحظه OTP ارسال می شود.",
-                      example: "2024-12-25T09:51:45Z"
-                    },
-                    receptors: {
-                      type: "array",
-                      description: "لیست گیرندگان پیام",
-                      items: {
-                        type: "object",
-                        required: ["mobile"],
-                        properties: {
-                          mobile: {
-                            type: "string",
-                            description: "شماره گیرنده پیام",
-                            example: "0919********"
-                          },
-                          clientReferenceId: {
-                            type: "string",
-                            description: "برای تعیین شماره ای یکتا از طرف کاربر برای هر پیامک به کار می رود",
-                            example: "1"
-                          }
-                        }
-                      }
-                    },
-                    templateName: {
-                      type: "string",
-                      description: "نام قالب",
-                      example: "Ghasedak"
-                    },
-                    inputs: {
-                      type: "array",
-                      description: "پارامترهای ورودی قالب",
-                      items: {
-                        type: "object",
-                        required: ["param", "value"],
-                        properties: {
-                          param: {
-                            type: "string",
-                            description: "نام پارامتر ورودی",
-                            example: "Code"
-                          },
-                          value: {
-                            type: "string",
-                            description: "مقدار پارامتر ورودی",
-                            example: "1234"
-                          }
-                        }
-                      }
-                    },
-                    udh: {
+                    isSuccess: {
                       type: "boolean",
-                      description:
-                        "برای تعیین نوع ارسال پیام ها که می تواند 16 یا 8 بیتی باشد. این پارامتر فقط برای پیش شماره 9000 اعمال می شود.",
-                      example: false
+                      description: "وضعیت پاسخ وب سرویس",
                     },
-                    isVoice: {
-                      type: "boolean",
-                      description: "صوتی بودن یا نبودن پیام را مشخص می کند.",
-                      example: false
-                    }
-                  }
+                    statusCode: {
+                      type: "integer",
+                      description: "کد وضعیت",
+                    },
+                    message: {
+                      type: "string",
+                      description: "پیام وضعیت وب سرویس",
+                    },
+                    data: {
+                      type: "object",
+                      properties: {
+                        items: {
+                          type: "array",
+                          items: {
+                            type: "object",
+                            properties: {
+                              messageBody: {
+                                type: "string",
+                                description: "متن پیام OTP",
+                              },
+                              receptor: {
+                                type: "string",
+                                description: "شماره گیرنده",
+                              },
+                              cost: {
+                                type: "integer",
+                                description: "هزینه ارسال OTP",
+                              },
+                              messageId: {
+                                type: "string",
+                                description: "شناسه OTP",
+                              },
+                              clientReferenceId: {
+                                type: "string",
+                                description: "شناسه محلی کاربر",
+                              },
+                              sendDate: {
+                                type: "string",
+                                format: "date-time",
+                                description: "زمان و تاریخ ارسال OTP",
+                              },
+                            },
+                          },
+                        },
+                        totalCost: {
+                          type: "integer",
+                          description: "هزینه کلی ارسال OTP",
+                        },
+                      },
+                    },
+                  },
                 },
                 examples: {
                   example1: {
-                    summary: "نمونه درخواست",
+                    summary: "نمونه پاسخ",
                     value: {
-                      sendDate: "2024-12-25T09:51:45Z",
-                      receptors: [
-                        {
-                          mobile: "0919********",
-                          clientReferenceId: "1"
-                        },
-                        {
-                          mobile: "0937********",
-                          clientReferenceId: "2"
-                        }
-                      ],
-                      templateName: "Ghasedak",
-                      inputs: [
-                        {
-                          param: "Code",
-                          value: "1234"
-                        }
-                      ],
-                      udh: false,
-                      isVoice: false
-                    }
-                  }
-                }
-              }
-            }
-          },
-          responses: {
-            "200": {
-              content: {
-                "application/json": {
-                  schema: {
-                    type: "object",
-                    properties: {
-                      isSuccess: {
-                        type: "boolean",
-                        description: "وضعیت پاسخ وب سرویس"
-                      },
-                      statusCode: {
-                        type: "integer",
-                        description: "کد وضعیت"
-                      },
-                      message: {
-                        type: "string",
-                        description: "پیام وضعیت وب سرویس"
-                      },
+                      isSuccess: true,
+                      statusCode: 200,
+                      message: "",
                       data: {
-                        type: "object",
-                        properties: {
-                          items: {
-                            type: "array",
-                            items: {
-                              type: "object",
-                              properties: {
-                                messageBody: {
-                                  type: "string",
-                                  description: "متن پیام OTP"
-                                },
-                                receptor: {
-                                  type: "string",
-                                  description: "شماره گیرنده"
-                                },
-                                cost: {
-                                  type: "integer",
-                                  description: "هزینه ارسال OTP"
-                                },
-                                messageId: {
-                                  type: "string",
-                                  description: "شناسه OTP"
-                                },
-                                clientReferenceId: {
-                                  type: "string",
-                                  description: "شناسه محلی کاربر"
-                                },
-                                sendDate: {
-                                  type: "string",
-                                  format: "date-time",
-                                  description: "زمان و تاریخ ارسال OTP"
-                                }
-                              }
-                            }
+                        items: [
+                          {
+                            messageBody:
+                              "به سامانه پیام کوتاه قاصدک خوش آمدید کد تایید شما 1234 می باشد ",
+                            receptor: "0937********",
+                            cost: 840,
+                            messageId: "23304979",
+                            clientReferenceId: "2",
+                            sendDate: "2024-12-25T09:59:45.599126+03:30",
                           },
-                          totalCost: {
-                            type: "integer",
-                            description: "هزینه کلی ارسال OTP"
-                          }
-                        }
-                      }
-                    }
+                          {
+                            messageBody:
+                              "به سامانه پیام کوتاه قاصدک خوش آمدید کد تایید شما 1234 می باشد ",
+                            receptor: "0919********",
+                            cost: 850,
+                            messageId: "23304980",
+                            clientReferenceId: "1",
+                            sendDate: "2024-12-25T09:59:45.599126+03:30",
+                          },
+                        ],
+                        totalCost: 1690,
+                      },
+                    },
                   },
-                  examples: {
-                    example1: {
-                      summary: "نمونه پاسخ",
-                      value: {
-                        isSuccess: true,
-                        statusCode: 200,
-                        message: "",
-                        data: {
-                          items: [
-                            {
-                              messageBody:
-                                "به سامانه پیام کوتاه قاصدک خوش آمدید کد تایید شما 1234 می باشد ",
-                              receptor: "0937********",
-                              cost: 840,
-                              messageId: "23304979",
-                              clientReferenceId: "2",
-                              sendDate: "2024-12-25T09:59:45.599126+03:30"
-                            },
-                            {
-                              messageBody:
-                                "به سامانه پیام کوتاه قاصدک خوش آمدید کد تایید شما 1234 می باشد ",
-                              receptor: "0919********",
-                              cost: 850,
-                              messageId: "23304980",
-                              clientReferenceId: "1",
-                              sendDate: "2024-12-25T09:59:45.599126+03:30"
-                            }
-                          ],
-                          totalCost: 1690
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
+                },
+              },
+            },
+          },
+        },
+      },
     },
-    components: {
-      securitySchemes: {
-        ApiKey: {
-          type: "apiKey",
-          in: "header",
-          name: "ApiKey",
-          description: "کلید شناسه API"
-        }
-      }
-    }
-  };
+  },
+  components: {
+    securitySchemes: {
+      ApiKey: {
+        type: "apiKey",
+        in: "header",
+        name: "ApiKey",
+        description: "کلید شناسه API",
+      },
+    },
+  },
+};

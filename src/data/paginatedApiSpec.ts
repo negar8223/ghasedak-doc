@@ -1,46 +1,49 @@
 export const paginatedApiSpec = {
-    openapi: "3.1.0",
-    info: {
-      title: "صفحه بندی پیام های دریافتی - Ghasedak SMS API",
-      version: "1.0.0",
-      description: "دریافت پیام های دریافتی به صورت صفحه بندی شده",
-      contact: {
-        name: "پشتیبانی قاصدک",
-        email: "support@ghasedak-ict.com",
-        url: "https://ghasedak.me"
-      }
+  openapi: "3.1.0",
+  info: {
+    title: "صفحه بندی پیام های دریافتی - Ghasedak SMS API",
+    version: "1.0.0",
+    description: "دریافت پیام های دریافتی به صورت صفحه بندی شده",
+    contact: {
+      name: "پشتیبانی قاصدک",
+      email: "support@ghasedak-ict.com",
+      url: "https://ghasedak.me",
     },
-    servers: [
-      {
-        url: "https://gateway.ghasedak.me/rest/api/v1",
-        description: "سرور اصلی قاصدک"
-      }
-    ],
-    paths: {
-      "/WebService/GetReceivedSmsesPaging": {
-        get: {
-          summary: "",
-          description: `دریافت لیست پیام های دریافتی به صورت صفحه بندی.
-  
-  در این متد حداکثر 200 پیام در هر صفحه بازگردانده می شود.
-  می‌توانید با استفاده از فیلترهای مختلف، پیام‌های مورد نظر خود را دریافت کنید.`,
-  
-          security: [
-            {
-              ApiKey: []
-            }
-          ],
-          "x-code-samples": [
-            {
-              lang: "curl",
-              label: "cURL",
-              source: `curl -X GET "https://gateway.ghasedak.me/rest/api/v1/WebService/GetReceivedSmsesPaging?lineNumber=21*******&isRead=true&startDate=2024-01-01&endDate=2024-02-02&pageIndex=1&pageSize=10" \\
-    -H "ApiKey: your-api-key-here"`
-            },
-            {
-              lang: "php",
-              label: "PHP",
-              source: `<?php
+  },
+  servers: [
+    {
+      url: "https://gateway.ghasedak.me/rest/api/v1",
+      description: "سرور اصلی قاصدک",
+    },
+  ],
+  tags: [
+    {
+      name: "صفحه بندی",
+      description: `دریافت لیست پیام های دریافتی به صورت صفحه بندی. <br/> در این متد حداکثر 200 پیام در هر صفحه بازگردانده میشود . میتوانید با استفاده از فیلترهای مختلف، پیام های مورد نظر خود را دریافت کنید.`,
+    },
+  ],
+  paths: {
+    "/WebService/GetReceivedSmsesPaging": {
+      get: {
+        summary: "پارامترهای ورودی",
+        description: "",
+
+        security: [
+          {
+            ApiKey: [],
+          },
+        ],
+        "x-code-samples": [
+          {
+            lang: "curl",
+            label: "cURL",
+            source: `curl -X GET "https://gateway.ghasedak.me/rest/api/v1/WebService/GetReceivedSmsesPaging?lineNumber=21*******&isRead=true&startDate=2024-01-01&endDate=2024-02-02&pageIndex=1&pageSize=10" \\
+    -H "ApiKey: your-api-key-here"`,
+          },
+          {
+            lang: "php",
+            label: "PHP",
+            source: `<?php
   $lineNumber = "21*******";
   $isRead = true;
   $startDate = "2024-01-01";
@@ -86,12 +89,12 @@ export const paginatedApiSpec = {
           }
       }
   }
-  ?>`
-            },
-            {
-              lang: "javascript",
-              label: "Node.js",
-              source: `const axios = require('axios');
+  ?>`,
+          },
+          {
+            lang: "javascript",
+            label: "Node.js",
+            source: `const axios = require('axios');
   
   const getReceivedMessagesPaging = async (options) => {
     const {
@@ -142,12 +145,12 @@ export const paginatedApiSpec = {
     endDate: '2024-02-02',
     pageIndex: 1,
     pageSize: 10
-  });`
-            },
-            {
-              lang: "python",
-              label: "Python",
-              source: `import requests
+  });`,
+          },
+          {
+            lang: "python",
+            label: "Python",
+            source: `import requests
   from datetime import datetime
   
   def get_received_messages_paging(
@@ -212,12 +215,12 @@ export const paginatedApiSpec = {
       end_date='2024-02-02',
       page_index=1,
       page_size=10
-  )`
-            },
-            {
-              lang: "csharp",
-              label: "C#",
-              source: `using System;
+  )`,
+          },
+          {
+            lang: "csharp",
+            label: "C#",
+            source: `using System;
   using System.Net.Http;
   using System.Threading.Tasks;
   using System.Text.Json;
@@ -290,12 +293,12 @@ export const paginatedApiSpec = {
               pageSize: 10
           );
       }
-  }`
-            },
-            {
-              lang: "java",
-              label: "Java",
-              source: `import okhttp3.*;
+  }`,
+          },
+          {
+            lang: "java",
+            label: "Java",
+            source: `import okhttp3.*;
   import org.json.JSONObject;
   import org.json.JSONArray;
   import java.io.IOException;
@@ -366,12 +369,12 @@ export const paginatedApiSpec = {
               }
           }
       }
-  }`
-            },
-            {
-              lang: "go",
-              label: "Go",
-              source: `package main
+  }`,
+          },
+          {
+            lang: "go",
+            label: "Go",
+            source: `package main
   
   import (
       "encoding/json"
@@ -480,272 +483,274 @@ export const paginatedApiSpec = {
       ); err != nil {
           fmt.Printf("خطا: %v\\n", err)
       }
-  }`
-            }
-          ],
-          parameters: [
-            {
-              name: "ApiKey",
-              in: "header",
-              required: true,
-              description: "کلید احراز هویت لازم برای دریافت پیام‌های صفحه‌بندی شده.",
-              schema: {
-                type: "string"
-              }
+  }`,
+          },
+        ],
+        parameters: [
+          {
+            name: "ApiKey",
+            in: "header",
+            required: true,
+            description:
+              "کلید احراز هویت لازم برای دریافت پیام‌های صفحه‌بندی شده.",
+            schema: {
+              type: "string",
             },
-            {
-              name: "lineNumber",
-              in: "query",
-              required: true,
-              description: "شماره خط",
-              schema: {
-                type: "string",
-                example: "21*******"
-              }
+          },
+          {
+            name: "lineNumber",
+            in: "query",
+            required: true,
+            description: "شماره خط",
+            schema: {
+              type: "string",
+              example: "21*******",
             },
-            {
-              name: "isRead",
-              in: "query",
-              required: false,
-              description:
-                "اگر (0) وارد شود پیام های خوانده نشده و اگر (1) وارد شود پیام های خوانده شده بر می گردد. در صورت وارد نکردن به صورت پیش فرض (0) می باشد.",
-              schema: {
-                type: "boolean",
-                example: true
-              }
+          },
+          {
+            name: "isRead",
+            in: "query",
+            required: false,
+            description:
+              "اگر (0) وارد شود پیام های خوانده نشده و اگر (1) وارد شود پیام های خوانده شده بر می گردد. در صورت وارد نکردن به صورت پیش فرض (0) می باشد.",
+            schema: {
+              type: "boolean",
+              example: true,
             },
-            {
-              name: "startDate",
-              in: "query",
-              required: false,
-              description: "تاریخ و زمان دقیق شروع ارسال پیام",
-              schema: {
-                type: "string",
-                format: "date-time",
-                example: "2024-01-01T00:00:00Z"
-              }
+          },
+          {
+            name: "startDate",
+            in: "query",
+            required: false,
+            description: "تاریخ و زمان دقیق شروع ارسال پیام",
+            schema: {
+              type: "string",
+              format: "date-time",
+              example: "2024-01-01T00:00:00Z",
             },
-            {
-              name: "endDate",
-              in: "query",
-              required: false,
-              description: "تاریخ و زمان دقیق پایان ارسال پیام",
-              schema: {
-                type: "string",
-                format: "date-time",
-                example: "2024-02-02T00:00:00Z"
-              }
+          },
+          {
+            name: "endDate",
+            in: "query",
+            required: false,
+            description: "تاریخ و زمان دقیق پایان ارسال پیام",
+            schema: {
+              type: "string",
+              format: "date-time",
+              example: "2024-02-02T00:00:00Z",
             },
-            {
-              name: "pageIndex",
-              in: "query",
-              required: false,
-              description: "صفحه مورد نظر را وارد کنید، صفحه اول 1 می باشد.",
-              schema: {
-                type: "integer",
-                example: 1
-              }
+          },
+          {
+            name: "pageIndex",
+            in: "query",
+            required: false,
+            description: "صفحه مورد نظر را وارد کنید، صفحه اول 1 می باشد.",
+            schema: {
+              type: "integer",
+              example: 1,
             },
-            {
-              name: "pageSize",
-              in: "query",
-              required: false,
-              description: "تعداد پیام بازگشتی در هر صفحه، حداکثر تعداد 200 می باشد.",
-              schema: {
-                type: "integer",
-                example: 10
-              }
-            }
-          ],
-          responses: {
-            "200": {
-              content: {
-                "application/json": {
-                  schema: {
-                    type: "object",
-                    properties: {
-                      isSuccess: {
-                        type: "boolean",
-                        description: "وضعیت پاسخ وب سرویس"
-                      },
-                      statusCode: {
-                        type: "integer",
-                        description: "کد وضعیت"
-                      },
-                      message: {
-                        type: "string",
-                        description: "پیام وضعیت وب سرویس"
-                      },
-                      data: {
-                        type: "object",
-                        properties: {
-                          pageIndex: {
-                            type: "integer",
-                            description: "شماره صفحه"
-                          },
-                          pageSize: {
-                            type: "integer",
-                            description: "تعداد آیتم های موجود در جدول"
-                          },
-                          totalCount: {
-                            type: "integer",
-                            description: "تعداد کل آیتم ها"
-                          },
-                          totalPages: {
-                            type: "integer",
-                            description: "تعداد کل صفحات"
-                          },
-                          hasPreviousPage: {
-                            type: "boolean",
-                            description: "وجود صفحه قبلی"
-                          },
-                          hasNextPage: {
-                            type: "boolean",
-                            description: "وجود صفحه بعدی"
-                          },
+          },
+          {
+            name: "pageSize",
+            in: "query",
+            required: false,
+            description:
+              "تعداد پیام بازگشتی در هر صفحه، حداکثر تعداد 200 می باشد.",
+            schema: {
+              type: "integer",
+              example: 10,
+            },
+          },
+        ],
+        responses: {
+          "200": {
+            content: {
+              "application/json": {
+                schema: {
+                  type: "object",
+                  properties: {
+                    isSuccess: {
+                      type: "boolean",
+                      description: "وضعیت پاسخ وب سرویس",
+                    },
+                    statusCode: {
+                      type: "integer",
+                      description: "کد وضعیت",
+                    },
+                    message: {
+                      type: "string",
+                      description: "پیام وضعیت وب سرویس",
+                    },
+                    data: {
+                      type: "object",
+                      properties: {
+                        pageIndex: {
+                          type: "integer",
+                          description: "شماره صفحه",
+                        },
+                        pageSize: {
+                          type: "integer",
+                          description: "تعداد آیتم های موجود در جدول",
+                        },
+                        totalCount: {
+                          type: "integer",
+                          description: "تعداد کل آیتم ها",
+                        },
+                        totalPages: {
+                          type: "integer",
+                          description: "تعداد کل صفحات",
+                        },
+                        hasPreviousPage: {
+                          type: "boolean",
+                          description: "وجود صفحه قبلی",
+                        },
+                        hasNextPage: {
+                          type: "boolean",
+                          description: "وجود صفحه بعدی",
+                        },
+                        items: {
+                          type: "array",
                           items: {
-                            type: "array",
-                            items: {
-                              type: "object",
-                              properties: {
-                                id: {
-                                  type: "integer",
-                                  description: "شناسه پیام"
-                                },
-                                message: {
-                                  type: "string",
-                                  description: "متن پیام"
-                                },
-                                sender: {
-                                  type: "string",
-                                  description: "فرستنده"
-                                },
-                                lineNumber: {
-                                  type: "string",
-                                  description: "شماره خط ارسال پیام"
-                                },
-                                receiveDate: {
-                                  type: "string",
-                                  format: "date-time",
-                                  description: "زمان و تاریخ دریافت پیام"
-                                }
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
+                            type: "object",
+                            properties: {
+                              id: {
+                                type: "integer",
+                                description: "شناسه پیام",
+                              },
+                              message: {
+                                type: "string",
+                                description: "متن پیام",
+                              },
+                              sender: {
+                                type: "string",
+                                description: "فرستنده",
+                              },
+                              lineNumber: {
+                                type: "string",
+                                description: "شماره خط ارسال پیام",
+                              },
+                              receiveDate: {
+                                type: "string",
+                                format: "date-time",
+                                description: "زمان و تاریخ دریافت پیام",
+                              },
+                            },
+                          },
+                        },
+                      },
+                    },
                   },
-                  examples: {
-                    example1: {
-                      summary: "نمونه پاسخ",
-                      value: {
-                        isSuccess: true,
-                        statusCode: 200,
-                        message: "با موفقیت انجام شد",
-                        data: {
-                          pageIndex: 1,
-                          pageSize: 10,
-                          totalCount: 45,
-                          totalPages: 5,
-                          hasPreviousPage: false,
-                          hasNextPage: true,
-                          items: [
-                            {
-                              id: 12345,
-                              message: "سلام، این یک پیام تست است",
-                              sender: "0919*******",
-                              lineNumber: "21*******",
-                              receiveDate: "2024-07-02T14:00:34.975Z"
-                            }
-                          ]
-                        }
-                      }
-                    }
-                  }
-                }
-              }
+                },
+                examples: {
+                  example1: {
+                    summary: "نمونه پاسخ",
+                    value: {
+                      isSuccess: true,
+                      statusCode: 200,
+                      message: "با موفقیت انجام شد",
+                      data: {
+                        pageIndex: 1,
+                        pageSize: 10,
+                        totalCount: 45,
+                        totalPages: 5,
+                        hasPreviousPage: false,
+                        hasNextPage: true,
+                        items: [
+                          {
+                            id: 12345,
+                            message: "سلام، این یک پیام تست است",
+                            sender: "0919*******",
+                            lineNumber: "21*******",
+                            receiveDate: "2024-07-02T14:00:34.975Z",
+                          },
+                        ],
+                      },
+                    },
+                  },
+                },
+              },
             },
-            "400": {
-              description: "درخواست نامعتبر",
-              content: {
-                "application/json": {
-                  schema: {
-                    type: "object",
-                    properties: {
-                      isSuccess: {
-                        type: "boolean",
-                        description: "وضعیت پاسخ وب سرویس"
-                      },
-                      statusCode: {
-                        type: "integer",
-                        description: "کد وضعیت"
-                      },
-                      message: {
-                        type: "string",
-                        description: "پیام خطا"
-                      }
-                    }
+          },
+          "400": {
+            description: "درخواست نامعتبر",
+            content: {
+              "application/json": {
+                schema: {
+                  type: "object",
+                  properties: {
+                    isSuccess: {
+                      type: "boolean",
+                      description: "وضعیت پاسخ وب سرویس",
+                    },
+                    statusCode: {
+                      type: "integer",
+                      description: "کد وضعیت",
+                    },
+                    message: {
+                      type: "string",
+                      description: "پیام خطا",
+                    },
                   },
-                  examples: {
-                    example1: {
-                      summary: "نمونه خطای 400",
-                      value: {
-                        isSuccess: false,
-                        statusCode: 400,
-                        message: "پارامترهای ورودی نامعتبر است"
-                      }
-                    }
-                  }
-                }
-              }
+                },
+                examples: {
+                  example1: {
+                    summary: "نمونه خطای 400",
+                    value: {
+                      isSuccess: false,
+                      statusCode: 400,
+                      message: "پارامترهای ورودی نامعتبر است",
+                    },
+                  },
+                },
+              },
             },
-            "500": {
-              description: "خطای سرور",
-              content: {
-                "application/json": {
-                  schema: {
-                    type: "object",
-                    properties: {
-                      isSuccess: {
-                        type: "boolean",
-                        description: "وضعیت پاسخ وب سرویس"
-                      },
-                      statusCode: {
-                        type: "integer",
-                        description: "کد وضعیت"
-                      },
-                      message: {
-                        type: "string",
-                        description: "پیام خطا"
-                      }
-                    }
+          },
+          "500": {
+            description: "خطای سرور",
+            content: {
+              "application/json": {
+                schema: {
+                  type: "object",
+                  properties: {
+                    isSuccess: {
+                      type: "boolean",
+                      description: "وضعیت پاسخ وب سرویس",
+                    },
+                    statusCode: {
+                      type: "integer",
+                      description: "کد وضعیت",
+                    },
+                    message: {
+                      type: "string",
+                      description: "پیام خطا",
+                    },
                   },
-                  examples: {
-                    example1: {
-                      summary: "نمونه خطای 500",
-                      value: {
-                        isSuccess: false,
-                        statusCode: 500,
-                        message: "خطای داخلی سرور"
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
+                },
+                examples: {
+                  example1: {
+                    summary: "نمونه خطای 500",
+                    value: {
+                      isSuccess: false,
+                      statusCode: 500,
+                      message: "خطای داخلی سرور",
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
     },
-    components: {
-      securitySchemes: {
-        ApiKey: {
-          type: "apiKey",
-          in: "header",
-          name: "ApiKey",
-          description: "کلید شناسه API"
-        }
-      }
-    }
-  };
+  },
+  components: {
+    securitySchemes: {
+      ApiKey: {
+        type: "apiKey",
+        in: "header",
+        name: "ApiKey",
+        description: "کلید شناسه API",
+      },
+    },
+  },
+};

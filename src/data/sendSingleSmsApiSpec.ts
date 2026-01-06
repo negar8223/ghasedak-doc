@@ -44,6 +44,11 @@ export const sendSingleSmsApiSpec = {
 همچنین در صورتی که شماره خط اختصاصی به‌صورت مستقیم در درخواست وب‌سرویس مشخص شود،
 پیامک بدون در نظر گرفتن اولویت‌ها، دقیقاً از همان خط ارسال خواهد شد.
 </p>
+<br/><br/>
+<p>
+چنانچه درخواست‌های ارسالی شما با خطای خاصی مواجه شد، برای آگاهی از دلایل آن می‌توانید از 
+<a href="/#errors" target="_blank">جدول خطاها</a> کمک بگیرید.
+</p>
 `,
     },
   ],
@@ -95,9 +100,55 @@ export const sendSingleSmsApiSpec = {
             },
           },
         },
+        // description: `<table>
+        // <thead>
+        // <tr>
+        // <th align="left">Body</th>
+        // <th align="left">نوع</th>
+        // <th align="left">توضیحات</th>
+        // </tr>
+        // </thead>
+        // <tbody>
+        // <tr>
+        // <td><b>message</b><br/><span>required</span></td>
+        // <td>string</td>
+        // <td>متن پیامک</td>
+        // </tr>
+        // <tr>
+        // <td><b>receptor</b><br/><span>required</span></td>
+        // <td>string</td>
+        // <td>شماره گیرنده</td>
+        // </tr>
+        // <tr>
+        // <td><b>clientReferenceId</b></td>
+        // <td>string</td>
+        // <td>
+        // شناسه کاربر برای تعیین شماره‌ای یکتا برای هر پیامک و پس از ارسال پیامک
+        // می‌توان با متد <code>status</code> اطلاعات پیام ارسال شده را دریافت کرد.
+        // </td>
+        // </tr>
+        // <tr>
+        // <td><b>lineNumber</b></td>
+        // <td>string</td>
+        // <td>
+        // شماره فرستنده پیام که می‌تواند شامل
+        // <code>fastest</code>،
+        // <code>cheapest</code>،
+        // <code>priority</code>
+        // یا شماره خط باشد.
+        // </td>
+        // </tr>
+        // <tr>
+        // <td><b>sendDate</b></td>
+        // <td>string · date-time</td>
+        // <td>زمان‌بندی ارسال؛ در صورت خالی بودن، ارسال آنی است</td>
+        // </tr>
+        // </tbody>
+        // </table>`,
+
         responses: {
-          "ارسال موفق (200)": {
-            // description: "ارسال پیامک موفقیت‌آمیز بود.",
+          "200": {
+            description: "ارسال موفق.",
             content: {
               "application/json": {
                 schema: {
@@ -171,8 +222,8 @@ export const sendSingleSmsApiSpec = {
               },
             },
           },
-          "ارسال ناموفق (غیر200)": {
-            // description: "ارسال پیامک موفقیت‌آمیز بود.",
+          "400": {
+            description: "ارسال ناموفق.",
             content: {
               "application/json": {
                 schema: {
@@ -192,7 +243,6 @@ export const sendSingleSmsApiSpec = {
                     },
                     data: {
                       type: "object",
-                     
                     },
                   },
                 },

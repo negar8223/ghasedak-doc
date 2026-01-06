@@ -16,14 +16,18 @@ export const latest100ApiSpec = {
       description: "سرور اصلی قاصدک",
     },
   ],
+  tags: [
+    {
+      name: "100 پیام آخر",
+      description: `دریافت لیست آخرین 100 پیام دریافتی<br/>این متدآخرین پیام های دریافتی خط شما را برمیگرداند. <br/> میتوانید پیام های خوانده شده یا خوانده نشده را فیلتر کنید.
+      `,
+    },
+  ],
   paths: {
     "/WebService/GetReceivedSmses": {
       get: {
-        summary: "100 پیام آخر",
-        description: `دریافت لیست آخرین 100 پیام دریافتی.
-  
-  این متد آخرین پیام‌های دریافتی خط شما را برمی‌گرداند.
-  می‌توانید پیام‌های خوانده شده یا خوانده نشده را فیلتر کنید.`,
+        summary: "پارامترهای ورودی",
+        description: "",
 
         security: [
           {
@@ -330,6 +334,16 @@ export const latest100ApiSpec = {
       if err := getReceivedMessages("21*******", false); err != nil {
           fmt.Printf("خطا: %v\\n", err)
       }
+      .scalar-card-checkbox[data-v-bf753e60]{
+        font-size: 0 ;
+      }
+      .scalar-toggle-button::after {
+        content: "نمونه پاسخ";
+        font-size: 13px;
+      }
+      .code-copy[data-v-bf753e60]:hover {
+        display: none;
+    }
   }`,
           },
         ],
