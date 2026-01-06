@@ -702,11 +702,6 @@ function App() {
               spec={sendOtpSmsNewApiSpec}
               theme={theme}
             />
-            <ScalarApiReference
-              instanceKey="scalar-otp-send"
-              spec={sendOtpApiSpec}
-              theme={theme}
-            />
           </section>
           <section id="otp-send" className="content-section">
             <ScalarApiReference
