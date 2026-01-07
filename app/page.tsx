@@ -59,11 +59,11 @@ function App() {
         { href: "#send-bulk", label: "ارسال گروهی", method: "POST" },
         { href: "#send-p2p", label: "ارسال نظیر به نظیر", method: "POST" },
         { href: "#otp-resend", label: "ارسال پیامک OTP جدید", method: "POST" },
-        {
-          href: "#otp-send",
-          label: "ارسال پیامک اعتبار سنجی (OTP)",
-          method: "POST",
-        },
+        // {
+        //   href: "#otp-send",
+        //   label: "ارسال پیامک اعتبار سنجی (OTP)",
+        //   method: "POST",
+        // },
         {
           href: "#otp-template",
           label: "دریافت پارامترهای قالب OTP",
@@ -74,8 +74,8 @@ function App() {
           label: "وضعیت پیام های ارسالی",
           method: "GET",
         },
-        { href: "#inbox-latest", label: "100 پیام آخر", method: "GET" },
-        { href: "#inbox-paged", label: "صفحه بندی", method: "GET" },
+        // { href: "#inbox-latest", label: "100 پیام آخر", method: "GET" },
+        { href: "#inbox-paged", label: "پیام های دریافتی", method: "GET" },
       ],
     },
     {
@@ -702,14 +702,19 @@ function App() {
               spec={sendOtpSmsNewApiSpec}
               theme={theme}
             />
-          </section>
-          <section id="otp-send" className="content-section">
             <ScalarApiReference
               instanceKey="scalar-otp-send"
               spec={sendOtpApiSpec}
               theme={theme}
             />
           </section>
+          {/* <section id="otp-send" className="content-section">
+            <ScalarApiReference
+              instanceKey="scalar-otp-send"
+              spec={sendOtpApiSpec}
+              theme={theme}
+            />
+          </section> */}
 
           <section id="otp-template" className="content-section">
             <ScalarApiReference
@@ -725,18 +730,23 @@ function App() {
               theme={theme}
             />
           </section>
-          <section id="inbox-latest" className="content-section">
+          {/* <section id="inbox-latest" className="content-section">
             <ScalarApiReference
               instanceKey="scalar-inbox-latest"
               spec={latest100ApiSpec}
               theme={theme}
             />
-          </section>
+          </section> */}
 
           <section id="inbox-paged" className="content-section">
             <ScalarApiReference
               instanceKey="scalar-inbox-paged"
               spec={paginatedApiSpec}
+              theme={theme}
+            />
+            <ScalarApiReference
+              instanceKey="scalar-inbox-latest"
+              spec={latest100ApiSpec}
               theme={theme}
             />
           </section>
